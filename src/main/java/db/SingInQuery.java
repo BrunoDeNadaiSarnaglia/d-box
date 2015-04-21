@@ -9,9 +9,9 @@ import java.sql.ResultSet;
  */
 public class SingInQuery {
 
-    protected static String username;
+    public static String username;
 
-    public static boolean signIn(String email, String password){
+    public static boolean check(String email, String password){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
