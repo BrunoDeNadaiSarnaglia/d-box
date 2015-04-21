@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
         name = "MyServlet", 
-        urlPatterns = {"/db"}
+        urlPatterns = {"/users"}
     )
 public class HelloServlet extends HttpServlet {
 
@@ -33,9 +33,11 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         if (req.getRequestURI().endsWith("/db")) {
-            showDatabase(req,resp);
-        } else {
-            showHome(req,resp);
+            showDatabase(req, resp);
+        } if (req.getRequestURI().endsWith("/users")) {
+            showDatabaseUsers(req, resp);
+        }else {
+            showHome(req, resp);
         }
     }
 
@@ -51,6 +53,47 @@ public class HelloServlet extends HttpServlet {
                 "      <P>Hello world!\n" +
                 "   </BODY>\n" +
                 "</HTML>");
+    }
+
+    private void showDatabaseUsers(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        Connection connection = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try{
+            connection = ConnectionConfigure.getConnection();
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM users");
+            String out = "Hello!\n";
+            while(rs.next()){
+                out += rs.getString(0) + " " + rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3);
+            }
+            resp.getWriter().print(out);
+        } catch (Exception e){
+            resp.getWriter().print("There was an error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                try{
+                    connection.close();
+                } catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (rs != null) {
+                try{
+                    rs.close();
+                } catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (stmt != null) {
+                try{
+                    rs.close();
+                } catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void showDatabase(HttpServletRequest req, HttpServletResponse resp)
