@@ -76,7 +76,7 @@ public class HelloServlet extends HttpServlet {
         }
     }
 
-    private Connection getConnection() throws URISyntaxException, SQLException {
+    private Connection getConnection() throws URISyntaxException, SQLException, ClassNotFoundException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
         String username = dbUri.getUserInfo().split(":")[0];
@@ -85,6 +85,7 @@ public class HelloServlet extends HttpServlet {
 
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath();
 
+        Class.forName("org.postgresql.Driver");
         return DriverManager.getConnection(dbUrl, username, password);
     }
     
