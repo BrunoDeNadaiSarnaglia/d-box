@@ -1,5 +1,7 @@
 package servlet;
 
+import db.ConnectionConfigure;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,7 +32,6 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         if (req.getRequestURI().endsWith("/db")) {
             showDatabase(req,resp);
         } else {
@@ -56,7 +57,7 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         Connection connection = null;
         try {
-            connection = getConnection();
+            connection = ConnectionConfigure.getConnection();
 
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
