@@ -6,7 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
     <head>
-        <title>Sign in</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap core CSS -->
@@ -34,10 +34,10 @@
                 </div>
                 <%}
                     }%>
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <input name="email" type="email" class="form-control" placeholder="Email address" autofocus="true">
-                <input name="password" type="password" class="form-control" placeholder="Password">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <h2 class="form-signin-heading" style="text-align: center;">Login</h2>
+                <input name="email" type="email" class="form-control" placeholder="Email address*" autofocus="true" required>
+                <input name="password" type="password" class="form-control" placeholder="Password*" required>
+                <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
                 <button onclick="window.location.href = 'signup.jsp'" class="btn btn-lg btn-primary btn-block" type="button">Not a user? Sign up</button>
             </form>
         </div> <!-- /container -->
