@@ -6,7 +6,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
     <head>
-        <title>Login page</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap core CSS -->
@@ -34,7 +34,7 @@
                 </div>
                 <%}
                     }%>
-                <h2 class="form-signin-heading" style="text-align: center;">Login now</h2>
+                <h2 class="form-signin-heading" style="text-align: center;">Login</h2>
                 <input name="email" type="email" class="form-control" placeholder="Email address" autofocus="true">
                 <input name="password" type="password" class="form-control" placeholder="Password">
                 <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>

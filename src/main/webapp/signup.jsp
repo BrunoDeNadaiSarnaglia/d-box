@@ -17,7 +17,7 @@
     <body>
         <div class="container">
             <form class="form-signin" action="RequestSignUp" method="POST">
-                <h2 class="form-signin-heading" style="text-align: center;">Sign up - it's free!</h2>
+                <h2 class="form-signin-heading" style="text-align: center;">Sign up now - it's free!</h2>
                 <input name="email" type="email" class="form-control" placeholder="Email address" autofocus="true">
                 <input name="name" type="name" class="form-control" placeholder="Username">
                 <input name="password" type="password" class="form-control" placeholder="Password">
