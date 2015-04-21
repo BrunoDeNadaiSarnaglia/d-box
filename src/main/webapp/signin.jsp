@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="container">
-            <form class="form-signin" action="RequestSignIn" method="POST">
+            <form class="form-signin" action="SignInRequest" method="POST">
 				<a href="index.jsp"><img src="img/logo_dbox.png" alt="DBox logo" width="128" class="img-responsive center-block" /></a>
                 <% if (request.getAttribute("loginError") != null) {
                         Boolean error = (Boolean) request.getAttribute("loginError");
