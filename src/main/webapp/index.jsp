@@ -21,7 +21,7 @@
 			<h1 style="text-align: center;">A database cloud repository</h1>
 			<div class='wrapper text-center'>
 				<div class = "btn btn-group">
-					<button onclick="window.location.href = 'signin.jsp'" type="button" class="btn btn-default">Sign in</button>
+					<button onclick="window.location.href = 'signin.jsp'" type="button" class="btn btn-default">Log in</button>
 					<button onclick="window.location.href = 'signup.jsp'" type="button" class="btn btn-primary">Sign up</button>
 				</div>
 			</div>
