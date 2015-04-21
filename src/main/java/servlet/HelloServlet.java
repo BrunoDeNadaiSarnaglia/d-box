@@ -85,7 +85,6 @@ public class HelloServlet extends HttpServlet {
 
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + port + dbUri.getPath();
 
-        Class.forName("org.postgresql.Driver");
         return DriverManager.getConnection(dbUrl, username, password);
     }
     
