@@ -17,12 +17,12 @@
     <body>
         <div class="container">
             <form class="form-signin" action="RequestSignUp" method="POST">
-                <h2 class="form-signin-heading">Please sign up</h2>
+                <h2 class="form-signin-heading" style="text-align: center;">Sign up - it's easy and free</h2>
                 <input name="email" type="email" class="form-control" placeholder="Email address" autofocus="true">
                 <input name="name" type="name" class="form-control" placeholder="Username">
                 <input name="password" type="password" class="form-control" placeholder="Password">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-                <button onclick="window.location.href = 'signin.jsp'" class="btn btn-lg btn-primary btn-block" type="button">Already a user? Sign in</button>
+                <button class="btn btn-lg btn-success btn-block" type="submit">Sign up</button>
+                <button onclick="window.location.href = 'signin.jsp'" class="btn btn-lg btn-primary btn-block" type="button">Already a user? Login</button>
             </form>
         </div> <!-- /container -->
         <!-- jQuery library -->
