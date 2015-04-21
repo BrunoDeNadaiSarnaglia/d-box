@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
         name = "MyServlet", 
-        urlPatterns = {"/users"}
+        urlPatterns = {"/users", "/db"}
     )
 public class HelloServlet extends HttpServlet {
 
@@ -66,7 +66,7 @@ public class HelloServlet extends HttpServlet {
             rs = stmt.executeQuery("SELECT * FROM users");
             String out = "Hello!\n";
             while(rs.next()){
-                out += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4);
+                out += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + "\n";
             }
             resp.getWriter().print(out);
         } catch (Exception e){
