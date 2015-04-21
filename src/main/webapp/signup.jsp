@@ -17,6 +17,7 @@
     <body>
         <div class="container">
             <form class="form-signin" action="RequestSignUp" method="POST">
+				<a href="index.jsp"><img src="img/logo_dbox.png" alt="DBox logo" width="128" class="img-responsive center-block" /></a>
                 <h2 class="form-signin-heading" style="text-align: center;">Sign up now - it's free!</h2>
                 <input name="email" type="email" class="form-control" placeholder="Email address*" autofocus="true" required>
                 <input name="name" type="name" class="form-control" placeholder="Username*" required>
