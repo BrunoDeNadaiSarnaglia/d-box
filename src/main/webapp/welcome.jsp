@@ -53,19 +53,17 @@
             </ul>
             <form id="show_friends">
                 <ul class="nav nav-sidebar">
-                    <li><a href="#">Show my friends</a></li>
+                    <li><a href="#" onclick="form.submit()">Show my friends</a></li>
                 </ul>
             </form>
             <form id="add_friend">
                 <ul class="nav nav-sidebar">
-                    <li><a href="#">Add a friend...</a></li>
+                    <li><a href="#" onclick="form.submit()">Add a friend...</a></li>
                 </ul>
             </form>
-            <form id="logout">
-                <ul class="nav nav-sidebar">
-                    <li><a href="index.jsp">Logout</a></li>
-                </ul>
-            </form>
+            <ul class="nav nav-sidebar">
+                <li><a href="index.jsp">Logout</a></li>
+            </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
