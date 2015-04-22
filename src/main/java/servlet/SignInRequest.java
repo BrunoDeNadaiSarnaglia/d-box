@@ -20,7 +20,7 @@ import java.io.IOException;
  */
 @WebServlet(
         name = "SignInRequest",
-        urlPatterns = {"/SignInRequest"}
+        urlPatterns = {"/welcome"}
 )
 public class SignInRequest extends HttpServlet {
 
