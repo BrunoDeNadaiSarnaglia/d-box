@@ -44,18 +44,23 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <form class="nav-sidebar">
-                <button class="btn navbar-btn" action="submit" style="width: inherit;">Show my friends</button>
-                <button class="btn navbar-btn" action="submit" style="width: inherit;">Add a friend</button>
-                <button class="btn navbar-btn" action="submit" style="width: inherit;">Logout</button>
-                <!--<ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
-                    <li>
-                        <button action="submit">Show my friends</button>
-                    </li>
-                    <li class="active"><a href="#">Add a friend...</a></li>
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
+            </ul>
+            <form id="show_friends">
+                <ul class="nav nav-sidebar">
+                    <li><a href="#">Show my friends</a></li>
+                </ul>
+            </form>
+            <form id="add_friend">
+                <ul class="nav nav-sidebar">
+                    <li><a href="#">Add a friend...</a></li>
+                </ul>
+            </form>
+            <form id="logout">
+                <ul class="nav nav-sidebar">
                     <li><a href="#">Logout</a></li>
-                </ul>-->
+                </ul>
             </form>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
