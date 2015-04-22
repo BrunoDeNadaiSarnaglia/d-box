@@ -35,9 +35,13 @@
             <a class="navbar-brand" href="#">DBox</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="settings.jsp">Settings</a></li>
-            </ul>
+            <form id="settings" action="Settings" method="POST">
+                <input type="hidden" name="name" value="<% out.print(name);%>">
+                <input type="hidden" name="email" value="<% out.print(email);%>">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="settings.jsp">Settings</a></li>
+                </ul>
+            </form>
         </div>
     </div>
 </nav>
