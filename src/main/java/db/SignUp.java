@@ -32,7 +32,10 @@ public class SignUp {
             preparedStatement.setString(3, password);
             preparedStatement.setInt(4, idCount);
             preparedStatement.executeUpdate();
-            System.out.println("INSERT INTO user (email, name, password, id) VALUES (?,?,?,?)");
+
+            preparedStatement = connection.prepareStatement("INSERT INTO folder (id, name) VALUES (?,?)");
+            preparedStatement.setInt(1, idCount);
+            preparedStatement.setString(1, name + "'s home folder");
         } catch (Exception e){
             e.printStackTrace();
         } finally {
