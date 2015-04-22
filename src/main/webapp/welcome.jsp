@@ -13,20 +13,15 @@
             String email = (String) request.getAttribute("email");
             out.print(name);
         %>
-        ! | DBox</title>
+        !</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="style/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="style/dashboard.css" rel="stylesheet">
-    <!-- Favicon image -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
-
 <body>
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -46,17 +41,21 @@
         </div>
     </div>
 </nav>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <form>
-                <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Show my friends</a></li>
+            <form class="nav-sidebar">
+                <button class="btn" action="submit">Show my friends</button>
+                <button class="btn" action="submit">Add a friend</button>
+                <button class="btn" action="submit">Logout</button>
+                <!--<ul class="nav nav-sidebar">
+                    <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
+                    <li>
+                        <button action="submit">Show my friends</button>
+                    </li>
                     <li class="active"><a href="#">Add a friend...</a></li>
                     <li><a href="#">Logout</a></li>
-                </ul>
+                </ul>-->
             </form>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
