@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 /**
  * Created by Bruno on 4/21/2015.
  */
-public class AddFolder {
+public class addFolder {
 
 
     public static void add(Integer idParent, String name){
