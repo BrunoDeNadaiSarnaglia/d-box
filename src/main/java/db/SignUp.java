@@ -15,9 +15,17 @@ public class SignUp {
         ResultSet resultSet = null;
         try{
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT MAX(id) AS id FROM users");
+            preparedStatement = connection.prepareStatement("SELECT MAX(id) AS id FROM file");
             resultSet = preparedStatement.executeQuery();
-            int idCount = resultSet.getInt("id");
+            int idCount = 0;
+            if(resultSet.next()) {
+                idCount = resultSet.getInt("id") + 1;
+            }
+            preparedStatement = connection.prepareStatement("SELECT MAX(id) AS id FROM folder");
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                idCount = Math.max(resultSet.getInt("id") + 1, idCount);
+            }
             preparedStatement = connection.prepareStatement("INSERT INTO users (email, name, password, id) VALUES (?,?,?,?)");
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, name);
