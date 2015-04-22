@@ -45,9 +45,9 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <form class="nav-sidebar">
-                <button class="btn" action="submit">Show my friends</button>
-                <button class="btn" action="submit">Add a friend</button>
-                <button class="btn" action="submit">Logout</button>
+                <button class="btn navbar-btn" action="submit">Show my friends</button>
+                <button class="btn navbar-btn" action="submit">Add a friend</button>
+                <button class="btn navbar-btn" action="submit">Logout</button>
                 <!--<ul class="nav nav-sidebar">
                     <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
                     <li>
