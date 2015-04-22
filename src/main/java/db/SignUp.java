@@ -35,7 +35,7 @@ public class SignUp {
 
             preparedStatement = connection.prepareStatement("INSERT INTO folder (id, name) VALUES (?,?)");
             preparedStatement.setInt(1, idCount);
-            preparedStatement.setString(1, name + "'s home folder");
+            preparedStatement.setString(2, name + "'s home folder");
         } catch (Exception e){
             e.printStackTrace();
         } finally {
