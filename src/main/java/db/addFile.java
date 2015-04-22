@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 /**
  * Created by Bruno on 4/21/2015.
  */
-public class addFile {
+public class AddFile {
 
 
     public static void add(String name, String URL){
