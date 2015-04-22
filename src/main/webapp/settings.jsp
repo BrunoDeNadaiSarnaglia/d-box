@@ -44,7 +44,7 @@
     <form class="form-signin" action="RequestDelete" method="POST">
         <input type="hidden" name="email" value="<% out.print(email);%>">
         <button class="btn btn-lg btn-danger btn-primary btn-block" type="submit">Delete my account</button>
-        <button onclick="window.location.href = 'welcome.jsp'" type="button" class="btn btn-default" aria-label="Left Align">
+        <button onclick="window.location.href = 'welcome.jsp'" type="button" class="btn btn-default btn-lg btn-block" aria-label="Left Align">
             <span class="glyphicon glyphicon-align-left glyphicon-arrow-left" aria-hidden="true"></span>Back
         </button>
     </form>
