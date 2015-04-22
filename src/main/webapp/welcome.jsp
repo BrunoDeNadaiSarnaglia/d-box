@@ -59,7 +59,7 @@
             </form>
             <form id="logout">
                 <ul class="nav nav-sidebar">
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="index.jsp">Logout</a></li>
                 </ul>
             </form>
         </div>
