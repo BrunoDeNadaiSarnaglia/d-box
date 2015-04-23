@@ -1,7 +1,8 @@
 package servlet;
 
 /**
- * Created by Cassio on 22/04/2015.
+ * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
+ * @version 1.0
  */
 public class DeleteUserRequest {
 }

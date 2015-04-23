@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Created by Bruno on 4/21/2015.
+ * @author Bruno de Nadai Sarnaglia <denadai2@illinois.edu>
+ * @version 1.0
  */
 public class UsersQuery {
 
-    public static String getUsername(String email){
+    public static String getUsername(String email) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -18,32 +19,32 @@ public class UsersQuery {
             preparedStatement = connection.prepareStatement("SELECT username FROM users WHERE email = ?");
             preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet.getString("username");
-            } else{
+            } else {
                 return null;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally  {
-            if(preparedStatement != null){
+        } finally {
+            if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            if (connection != null){
-                try{
+            if (connection != null) {
+                try {
                     connection.close();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            if (resultSet != null){
-                try{
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

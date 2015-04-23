@@ -5,26 +5,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Created by Bruno on 4/21/2015.
+ * @author Bruno de Nadai Sarnaglia <denadai2@illinois.edu>
+ * @version 1.0
  */
 public class addFolder {
 
 
-    public static void add(Integer idParent, String name){
+    public static void add(Integer idParent, String name) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try{
+        try {
             connection = ConnectionConfigure.getConnection();
             preparedStatement = connection.prepareStatement("SELECT MAX(id) AS id FROM file");
             resultSet = preparedStatement.executeQuery();
             int idCount = 0;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 idCount = resultSet.getInt("id") + 1;
             }
             preparedStatement = connection.prepareStatement("SELECT MAX(id) AS id FROM folder");
             resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 idCount = Math.max(resultSet.getInt("id") + 1, idCount);
             }
             preparedStatement = connection.prepareStatement("INSERT INTO folder (id, name) VALUES (?,?)");
@@ -37,27 +38,27 @@ public class addFolder {
             preparedStatement.setInt(2, idCount);
             preparedStatement.executeUpdate();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(preparedStatement != null){
+            if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            if (connection != null){
-                try{
+            if (connection != null) {
+                try {
                     connection.close();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            if (resultSet != null){
-                try{
+            if (resultSet != null) {
+                try {
                     connection.close();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

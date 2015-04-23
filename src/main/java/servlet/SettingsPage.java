@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author Cassio
+ * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
+ * @version 1.0
  */
 @WebServlet(
         name = "SettingsPage",

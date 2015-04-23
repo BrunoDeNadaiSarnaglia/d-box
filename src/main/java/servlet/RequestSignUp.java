@@ -17,7 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author Cassio
+ * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
+ * @version 1.0
  */
 @WebServlet(
         name = "RequestSignUp",

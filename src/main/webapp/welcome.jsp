@@ -38,7 +38,7 @@
             <form action="SettingsPage" method="POST">
                 <input type="hidden" name="name" value="<% out.print(name);%>">
                 <input type="hidden" name="email" value="<% out.print(email);%>">
-                <button class="btn btn-primary btn-block" type="submit">Settings</button>
+                <button class="btn btn-primary" type="submit">Settings</button>
             </form>
         </div>
     </div>

@@ -1,7 +1,8 @@
 package rowClasses;
 
 /**
- * Created by Bruno on 4/21/2015.
+ * @author Bruno de Nadai Sarnaglia <denadai2@illinois.edu>
+ * @version 1.0
  */
 public class File {
 

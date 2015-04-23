@@ -14,10 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
+ * @version 1.0
+ */
 @WebServlet(
-        name = "MyServlet", 
+        name = "MyServlet",
         urlPatterns = {"/users", "/db"}
-    )
+)
 public class HelloServlet extends HttpServlet {
 
     /*@Override
@@ -34,9 +38,10 @@ public class HelloServlet extends HttpServlet {
             throws ServletException, IOException {
         if (req.getRequestURI().endsWith("/db")) {
             showDatabase(req, resp);
-        } if (req.getRequestURI().endsWith("/users")) {
+        }
+        if (req.getRequestURI().endsWith("/users")) {
             showDatabaseUsers(req, resp);
-        }else {
+        } else {
             showHome(req, resp);
         }
     }
@@ -60,36 +65,36 @@ public class HelloServlet extends HttpServlet {
         Connection connection = null;
         Statement stmt = null;
         ResultSet rs = null;
-        try{
+        try {
             connection = ConnectionConfigure.getConnection();
             stmt = connection.createStatement();
             rs = stmt.executeQuery("SELECT * FROM users");
             String out = "Hello!\n";
-            while(rs.next()){
+            while (rs.next()) {
                 out += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + "\n";
             }
             resp.getWriter().print(out);
-        } catch (Exception e){
+        } catch (Exception e) {
             resp.getWriter().print("There was an error: " + e.getMessage());
         } finally {
             if (connection != null) {
-                try{
+                try {
                     connection.close();
-                } catch(SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
             if (rs != null) {
-                try{
+                try {
                     rs.close();
-                } catch(SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
             if (stmt != null) {
-                try{
+                try {
                     rs.close();
-                } catch(SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
@@ -116,7 +121,10 @@ public class HelloServlet extends HttpServlet {
         } catch (Exception e) {
             resp.getWriter().print("There was an error: " + e.getMessage());
         } finally {
-            if (connection != null) try{connection.close();} catch(SQLException e){}
+            if (connection != null) try {
+                connection.close();
+            } catch (SQLException e) {
+            }
         }
     }
 
@@ -131,5 +139,5 @@ public class HelloServlet extends HttpServlet {
 
         return DriverManager.getConnection(dbUrl, username, password);
     }
-    
+
 }
