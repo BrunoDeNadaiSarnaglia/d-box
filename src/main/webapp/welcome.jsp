@@ -71,15 +71,19 @@
             <div class="row placeholders">
                 <form>
                     <div class="col-md-6 placeholder">
-                        <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
-                        <h4>Add a file</h4>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
+                            <h4>Add a file</h4>
+                        </a>
                     </div>
                 </form>
                 <form>
                     <div class="col-md-6 placeholder">
-                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
-                              style="font-size: 300%;"></span>
-                        <h4>Add a folder</h4>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
+                                  style="font-size: 300%;"></span>
+                            <h4>Add a folder</h4>
+                        </a>
                     </div>
                 </form>
             </div>
