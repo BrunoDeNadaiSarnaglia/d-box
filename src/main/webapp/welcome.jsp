@@ -70,7 +70,7 @@
 
             <div class="row placeholders">
                 <form>
-                    <div class="col-md-6 placeholder">
+                    <div class="col-md-6 placeholder" style="background-color: #F00">
                         <a href="#">
                             <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                             <h4>Add a file</h4>
@@ -78,7 +78,7 @@
                     </div>
                 </form>
                 <form>
-                    <div class="col-md-6 placeholder">
+                    <div class="col-md-6 placeholder" style="background-color: #F00">
                         <a href="#">
                             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
                                   style="font-size: 300%;"></span>
