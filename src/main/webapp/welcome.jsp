@@ -69,16 +69,20 @@
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
 
             <div class="row placeholders">
-                <div class="col-md-6 placeholder">
-                    <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
-                    <h4>Add a file</h4>
-                </div>
-                <div class="col-md-6 placeholder">
-                    <span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="font-size: 300%;"></span>
-                    <h4>Add a folder</h4>
-                </div>
+                <form>
+                    <div class="col-md-6 placeholder">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
+                        <h4>Add a file</h4>
+                    </div>
+                </form>
+                <form>
+                    <div class="col-md-6 placeholder">
+                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
+                              style="font-size: 300%;"></span>
+                        <h4>Add a folder</h4>
+                    </div>
+                </form>
             </div>
-
             <h2 class="sub-header">Your files</h2>
 
             <div class="table-responsive">
