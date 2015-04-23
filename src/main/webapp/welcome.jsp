@@ -39,9 +39,6 @@
                 <input type="hidden" name="name" value="<% out.print(name);%>">
                 <input type="hidden" name="email" value="<% out.print(email);%>">
                 <button class="btn btn-primary btn-block" type="submit">Settings</button>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="settings.jsp" onClick="form.submit()">Settings</a></li>
-                </ul>
             </form>
         </div>
     </div>
