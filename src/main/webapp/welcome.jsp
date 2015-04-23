@@ -39,7 +39,7 @@
                 <input type="hidden" name="name" value="<% out.print(name);%>">
                 <input type="hidden" name="email" value="<% out.print(email);%>">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a onClick="form.submit()">Settings</a></li>
+                    <li><a href="settings.jsp" onClick="form.submit()">Settings</a></li>
                 </ul>
             </form>
         </div>

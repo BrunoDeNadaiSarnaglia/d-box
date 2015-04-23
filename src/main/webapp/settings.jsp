@@ -8,11 +8,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Settings</title>
-    <%
-        String name = (String) request.getAttribute("name");
-        String email = (String) request.getAttribute("email");
-    %>
+    <title>Settings
+        <%
+            String name = (String) request.getAttribute("name");
+            String email = (String) request.getAttribute("email");
+            if (name != null)
+                out.print(name);
+            if (email != null)
+                out.print(email);
+        %>
+    </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
@@ -44,7 +49,8 @@
     <form class="form-signin" action="RequestDelete" method="POST">
         <input type="hidden" name="email" value="<% out.print(email);%>">
         <button class="btn btn-lg btn-danger btn-primary btn-block" type="submit">Delete my account</button>
-        <button onclick="window.location.href = 'welcome.jsp'" type="button" class="btn btn-default btn-lg btn-block" aria-label="Left Align">
+        <button onclick="window.location.href = 'welcome.jsp'" type="button" class="btn btn-default btn-lg btn-block"
+                aria-label="Left Align">
             <span class="glyphicon glyphicon-align-left glyphicon-arrow-left" aria-hidden="true"></span> Back
         </button>
     </form>
