@@ -37,9 +37,7 @@
     <% }
     }%>
     <img src="img/logo_dbox.png" alt="DBox logo" width="128" class="img-responsive center-block"/>
-
     <h2 class="form-signin-heading" style="text-align: center;">Settings</h2>
-
     <form class="form-signin" action="RequestPassword" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
