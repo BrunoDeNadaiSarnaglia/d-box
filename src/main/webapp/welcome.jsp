@@ -69,16 +69,16 @@
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
 
             <div class="row placeholders">
-                <form>
-                    <div class="col-md-6 placeholder" style="background-color: #F00">
+                <form action="AddFileFolderPage" method="POST">
+                    <div class="col-md-6 placeholder">
                         <a href="#">
                             <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                             <h4>Add a file</h4>
                         </a>
                     </div>
                 </form>
-                <form>
-                    <div class="col-md-6 placeholder" style="background-color: #F00">
+                <form action="AddFolder" method="POST">
+                    <div class="col-md-6 placeholder">
                         <a href="#">
                             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
                                   style="font-size: 300%;"></span>
