@@ -127,9 +127,13 @@
                         for (Folder folder : folderList) {
                     %>
                     <tr>
-                        <td><span class="glyphicon glyphicon-file"></span></td>
+                        <td><span class="glyphicon glyphicon-folder-open" style="margin: 0; padding: 0;"></td>
                         <td><% out.print(folder.getName()); %></td>
-                        <td></td>
+                        <td>
+                            <form>
+                                <button class="btn btn-block btn-primary">OPEN FOLDER</button>
+                            </form>
+                        </td>
                         <td>
                             <form>
                                 <button class="btn btn-block btn-danger">DELETE</button>
@@ -143,7 +147,7 @@
                             for (File file : fileList) {
                     %>
                     <tr>
-                        <td><span class="glyphicon glyphicon-file"></span></td>
+                        <td><span class="glyphicon glyphicon-file" style="margin: 0; padding: 0;"></span></td>
                         <td><% out.print(file.getName()); %></td>
                         <td><a href="<% out.print(file.getURL()); %>" target="_blank"><%
                             out.print(file.getURL()); %></a></td>
