@@ -12,10 +12,6 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
-            if (name != null)
-                out.print(name);
-            if (email != null)
-                out.print(email);
         %>
     </title>
     <meta charset="UTF-8">
@@ -34,8 +30,15 @@
     <div class="alert alert-success" style="text-align: center;" role="alert">
         Password changed successfully!
     </div>
-    <% }
-    }%>
+    <% } else {
+    %>
+    <div class="alert alert-danger" style="text-align: center;" role="alert">
+        The two passwords do not match
+    </div>
+    <%
+            }
+        }
+    %>
     <img src="img/logo_dbox.png" alt="DBox logo" width="128" class="img-responsive center-block"/>
 
     <h2 class="form-signin-heading" style="text-align: center;">Settings</h2>
@@ -43,7 +46,8 @@
     <form class="form-signin" action="RequestPassword" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
-        <input name="password" type="password" class="form-control" placeholder="Enter new password">
+        <input type="password" name="password1" class="form-control" placeholder="Enter new password">
+        <input type="password" name="password2" class="form-control" placeholder="Enter new password again">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Set new password</button>
     </form>
     <form class="form-signin" action="RequestDelete" method="POST">
