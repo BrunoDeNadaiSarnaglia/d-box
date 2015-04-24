@@ -86,8 +86,9 @@ public class SignInRequest extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         RequestDispatcher dispatcher;
+        Integer id = null;
         if (SingInQuery.check(email, password)) {
-            Integer id = IdByEmail.getId(email);
+            id = IdByEmail.getId(email);
             HashSet<File> fileList = null;
             HashSet<Folder> folderList = null;
             if (id != null) {
@@ -98,6 +99,7 @@ public class SignInRequest extends HttpServlet {
             request.setAttribute("name", SingInQuery.username);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
+            request.setAttribute("id", id);
             request.setAttribute("fileList", fileList);
             request.setAttribute("folderList", folderList);
             dispatcher.forward(request, response);

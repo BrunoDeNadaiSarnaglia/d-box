@@ -13,6 +13,7 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
+            Integer id = (Integer) request.getAttribute("id");
             HashSet<File> fileList = (HashSet<File>) request.getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getAttribute("folderList");
             out.print(name);
@@ -82,6 +83,9 @@
                     <form class="form-signin" action="AddFileToCurrentFolder" method="POST">
                         <input type="text" name="file_name" placeholder="File Name*" class="form-control" required>
                         <input type="url" name="url" placeholder="URL*" class="form-control" required>
+                        <input type="hidden" name="name" value="<% out.print(name); %>">
+                        <input type="hidden" name="email" value="<% out.print(email); %>">
+                        <input type="hidden" name="id" value="<% out.print(id); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
                 </div>
@@ -93,6 +97,9 @@
 
                     <form class="form-signin" action="AddFolderToCurrentFolder" method="POST">
                         <input type="text" name="folder_name" placeholder="Folder Name*" class="form-control" required>
+                        <input type="hidden" name="name" value="<% out.print(name); %>">
+                        <input type="hidden" name="email" value="<% out.print(email); %>">
+                        <input type="hidden" name="id" value="<% out.print(id); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a folder</button>
                     </form>
                 </div>
