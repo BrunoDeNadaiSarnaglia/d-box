@@ -15,6 +15,7 @@ public class DeleteAccount {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
+            System.out.println("ENTROU NO TRY " + email);
             connection = ConnectionConfigure.getConnection();
             preparedStatement = connection.prepareStatement("DELETE FROM friendship WHERE email1 = ? OR email2 = ?");
             preparedStatement.setString(1, email);
@@ -31,6 +32,7 @@ public class DeleteAccount {
             preparedStatement = connection.prepareStatement("DELETE FROM users WHERE email = ?");
             preparedStatement.setString(1, email);
             preparedStatement.executeUpdate();
+            System.out.println("DELETE FROM users WHERE email = ?");
         } catch (Exception e){
             e.printStackTrace();
         } finally {
