@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -69,8 +70,8 @@ public class SignInRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
-        view.forward(request, response);
+        getServletContext().setAttribute("loginError", true);
+        getServletContext().getRequestDispatcher("/signin.jsp").forward(request, response);
     }
 
     /**
@@ -96,19 +97,17 @@ public class SignInRequest extends HttpServlet {
                 fileList = ListFilesInFolder.list(id);
                 folderList = ListFoldersInFolder.list(id);
             }
-            dispatcher = request.getRequestDispatcher("/welcome.jsp");
-            request.setAttribute("name", SingInQuery.username);
-            request.setAttribute("email", email);
-            request.setAttribute("password", password);
-            request.setAttribute("id", id);
-            request.setAttribute("rootID", id);
-            request.setAttribute("fileList", fileList);
-            request.setAttribute("folderList", folderList);
-            dispatcher.forward(request, response);
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("name", SingInQuery.username);
+            httpSession.setAttribute("email", email);
+            httpSession.setAttribute("password", password);
+            httpSession.setAttribute("id", id);
+            httpSession.setAttribute("rootID", id);
+            httpSession.setAttribute("fileList", fileList);
+            httpSession.setAttribute("folderList", folderList);
+            response.sendRedirect(getServletContext().getContextPath());
         } else {
-            dispatcher = request.getRequestDispatcher("/signin.jsp");
-            request.setAttribute("loginError", true);
-            dispatcher.forward(request, response);
+            this.doGet(request, response);
         }
     }
 
