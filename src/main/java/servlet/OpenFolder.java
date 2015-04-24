@@ -108,6 +108,7 @@ public class OpenFolder extends HttpServlet {
         httpSession.setAttribute("id", idParent);
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
+        httpSession.setAttribute("showFriends", false);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
