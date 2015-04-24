@@ -47,6 +47,8 @@
         <button class="btn btn-lg btn-danger btn-primary btn-block" type="submit">Delete my account</button>
     </form>
     <form class="form-signin" action="BackToHome" method="POST">
+        <input type="hidden" name="name" value="<% out.print(name);%>">
+        <input type="hidden" name="email" value="<% out.print(email);%>">
         <button class="btn btn-default btn-lg btn-block" type="submit">
             <span class="glyphicon glyphicon-align-left glyphicon-arrow-left" aria-hidden="true"></span> Back
         </button>
