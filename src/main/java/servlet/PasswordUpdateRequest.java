@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -77,11 +78,10 @@ public class PasswordUpdateRequest extends HttpServlet {
         Integer id = Integer.valueOf(request.getParameter("id"));
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/settings.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("id", id);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("name", name);
+        httpSession.setAttribute("email", email);
+        httpSession.setAttribute("id", id);
         boolean changedPassword = false;
         if (password1 != null && password2 != null) {
             if (password1.equals(password2)) {
@@ -89,8 +89,8 @@ public class PasswordUpdateRequest extends HttpServlet {
                 changedPassword = true;
             }
         }
-        request.setAttribute("changedPassword", changedPassword);
-        dispatcher.forward(request, response);
+        httpSession.setAttribute("changedPassword", changedPassword);
+        response.sendRedirect(getServletContext().getContextPath() + "settings.jsp");
     }
 
     /**
