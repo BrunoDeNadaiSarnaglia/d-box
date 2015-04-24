@@ -52,8 +52,11 @@
                     Settings
                 </button>
             </form>
-            <form class="navbar-form navbar-left">
-                <input type="text" class="form-control" placeholder="Search friends...">
+            <form method="get" action="SearchFriend" class="navbar-form navbar-left">
+                <input type="hidden" name="name" value="<% out.print(name); %>">
+                <input type="hidden" name="email" value="<% out.print(email); %>">
+                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                <input type="text" name="friend_email" class="form-control" placeholder="Search friends email...">
                 <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
                     <span class="glyphicon glyphicon-search"></span> Add a friend
                 </button>
@@ -265,10 +268,57 @@
             %>
             <h3>You have no friends yet.</h3>
             <%
+                if (request.getSession().getAttribute("friendsAlike") != null) {
+            %>
+            <h3>Possible friends</h3>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <col width="40%">
+                    <col width="40%">
+                    <col>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        HashSet<User> friendsAlike = (HashSet<User>) request.getSession().getAttribute("friendsAlike");
+                        if (friendsAlike.size() > 0) {
+                            for (User user : friendsAlike) {
+                    %>
+                    <tr>
+                        <td><% out.print(user.getName()); %></td>
+                        <td><% out.print(user.getEmail()); %></td>
+                        <td>
+                            <form action="Befriend" method="POST">
+                                <input type="hidden" name="name" value="<% out.print(name); %>">
+                                <input type="hidden" name="email" value="<% out.print(email); %>">
+                                <input type="hidden" name="friendEmail" value="<% out.print(user.getEmail()); %>">
+                                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                                <button class="btn btn-block btn-success" style="width: 200px;" type="submit">Be Friends
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                    </tbody>
+                </table>
+            </div>
+            <%
+            } else { %>
+            <h3>Your search had no results.</h3>
+            <%
+                            }
+                        }
                     }
                 }
             %>
-
         </div>
     </div>
 </div>
