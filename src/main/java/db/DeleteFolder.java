@@ -25,6 +25,7 @@ public class DeleteFolder {
             HashSet<Folder> setOfFolder=  ListFoldersInFolder.list(id);
             if(setOfFolder!= null && setOfFolder.size() != 0) {
                 for (Folder folder : setOfFolder) {
+                    System.out.println(folder.getId());
                     DeleteFolder deleteFolder = new DeleteFolder();
                     deleteFolder.delete(folder.getId());
                 }
