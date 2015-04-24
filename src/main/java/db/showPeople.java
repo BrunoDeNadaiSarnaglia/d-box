@@ -20,6 +20,7 @@ public class showPeople {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
+            System.out.println("ENTROU NO TRY" + like);
             connection = ConnectionConfigure.getConnection();
             preparedStatement = connection.prepareStatement("SELECT email, name, password, id FROM users WHERE name LIKE ?");
             preparedStatement.setString(1, "%" + like + "%");
@@ -27,6 +28,7 @@ public class showPeople {
             while(resultSet.next()){
                 setOfUser.add(new User(resultSet.getString("email"), resultSet.getString("name"), resultSet.getInt("id")));
             }
+            System.out.println("ACAAABOOOOOOOUUUUU " + setOfUser.size());
         } catch (Exception e){
             e.printStackTrace();
         } finally {
