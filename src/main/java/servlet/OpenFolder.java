@@ -91,7 +91,21 @@ public class OpenFolder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        Integer idParent = Integer.valueOf(request.getParameter("id"));
+        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
+        HashSet<File> fileList = ListFilesInFolder.list(idParent);
+        HashSet<Folder> folderList = ListFoldersInFolder.list(idParent);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("/welcome.jsp");
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
+        request.setAttribute("id", idParent);
+        request.setAttribute("rootID", rootID);
+        request.setAttribute("fileList", fileList);
+        request.setAttribute("folderList", folderList);
+        dispatcher.forward(request, response);
     }
 
     /**
