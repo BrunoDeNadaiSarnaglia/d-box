@@ -24,7 +24,7 @@ public class ListFoldersInFolder {
         ResultSet resultSet = null;
         try {
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT id, name FROM contain, folder WHERE parentId = ? AND childId = id");
+            preparedStatement = connection.prepareStatement("SELECT id, name FROM folder WHERE id IN (SELECT childId FROM contain WHERE parentID = ?)");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
