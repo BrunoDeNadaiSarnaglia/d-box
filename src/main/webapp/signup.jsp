@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" action="RequestSignUp" method="POST">
+    <form class="form-signin" action="SignUpRequest" method="POST">
         <a href="index.jsp"><img src="img/logo_dbox.png" alt="DBox logo" width="128"
                                  class="img-responsive center-block"/></a>
 
