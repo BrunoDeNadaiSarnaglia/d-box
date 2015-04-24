@@ -67,13 +67,14 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
+
             <div class="row placeholders">
                 <div class="col-md-2 placeholder">
-                    <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                 </div>
                 <div class="col-md-3 placeholder">
                     <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                     <br>
+
                     <form class="form-signin" action="AddFileToCurrentFolder" method="POST">
                         <input type="text" name="file_name" placeholder="File Name" class="form-control">
                         <input type="url" name="url" placeholder="URL" class="form-control">
@@ -81,18 +82,17 @@
                     </form>
                 </div>
                 <div class="col-md-2 placeholder">
-                    <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                 </div>
                 <div class="col-md-3 placeholder">
                     <span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="font-size: 300%;"></span>
                     <br>
+
                     <form class="form-signin" action="AddFolderToCurrentFolder" method="POST">
                         <input type="text" name="folder_name" placeholder="Folder Name" class="form-control">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Add a folder</button>
                     </form>
                 </div>
                 <div class="col-md-2 placeholder">
-                    <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
                 </div>
             </div>
             <h2 class="sub-header">Your files</h2>
