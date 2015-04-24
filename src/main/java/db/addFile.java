@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public class addFile {
 
 
-    public static void add(String name, String URL) {
+    public static void add(Integer idParent, String name, String URL) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -33,6 +33,11 @@ public class addFile {
             preparedStatement.setString(2, name);
             preparedStatement.setString(3, URL);
             preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("INSERT INTO contain (parentId, childId) VALUES (?,?)");
+            preparedStatement.setInt(1, idParent);
+            preparedStatement.setInt(2, idCount);
+            preparedStatement.executeUpdate();
+
 
         } catch (Exception e) {
             e.printStackTrace();
