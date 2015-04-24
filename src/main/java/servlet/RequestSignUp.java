@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
@@ -82,9 +83,9 @@ public class RequestSignUp extends HttpServlet {
         String username = request.getParameter("name");
         String password = request.getParameter("password");
         SignUp.insert(username, email, password);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/signin.jsp");
-        request.setAttribute("newUser", true);
-        dispatcher.forward(request, response);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("newUser", true);
+        response.sendRedirect(getServletContext().getContextPath() + "signin.jsp");
     }
 
     /**
