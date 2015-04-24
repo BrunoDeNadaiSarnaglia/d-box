@@ -23,11 +23,12 @@ public class DeleteFolder {
                     DeleteFile.delete(file.getId());
                 }
             }
-            HashSet<Folder> setOfFolder=  ListFoldersInFolder.list(id);
+            ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+            HashSet<Folder> setOfFolder=  listFoldersInFolder.list(id);
             if(setOfFolder!= null && setOfFolder.size() != 0) {
-//                System.out.println("size: " + setOfFolder.size());
+                System.out.println("size: " + setOfFolder.size());
                 for (Folder folder : setOfFolder) {
-//                    System.out.println(folder.getId());
+                    System.out.println(folder.getId());
                     DeleteFolder deleteFolder = new DeleteFolder();
                     deleteFolder.delete(folder.getId());
                 }
@@ -36,7 +37,7 @@ public class DeleteFolder {
             preparedStatement = connection.prepareStatement("DELETE FROM folder WHERE id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-            preparedStatement = connection.prepareStatement("DELETE FROM contain WHERE parentId = ?");
+            preparedStatement = connection.prepareStatement("DELETE FROM contain WHERE childId = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
 
