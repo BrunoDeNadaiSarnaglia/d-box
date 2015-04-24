@@ -12,12 +12,12 @@
 <head>
     <title>Welcome,
         <%
-            String name = (String) request.getAttribute("name");
-            String email = (String) request.getAttribute("email");
-            Integer thisID = (Integer) request.getAttribute("id");
+            String name = (String) request.getSession().getAttribute("name");
+            String email = (String) request.getSession().getAttribute("email");
+            Integer thisID = (Integer) request.getSession().getAttribute("id");
             Integer rootID = IdByEmail.getId(email);
-            HashSet<File> fileList = (HashSet<File>) request.getAttribute("fileList");
-            HashSet<Folder> folderList = (HashSet<Folder>) request.getAttribute("folderList");
+            HashSet<File> fileList = (HashSet<File>) request.getSession().getAttribute("fileList");
+            HashSet<Folder> folderList = (HashSet<Folder>) request.getSession().getAttribute("folderList");
             out.print(name);
         %>
         !</title>
