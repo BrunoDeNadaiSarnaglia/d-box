@@ -51,6 +51,9 @@
                         style="margin-top: 7px; background-color: #333; border-color: #333;">Settings
                 </button>
             </form>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
         </div>
     </div>
 </nav>
