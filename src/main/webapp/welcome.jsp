@@ -114,7 +114,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>File</td>
+                        <td>File Name whatever</td>
                         <td>simple_url.com</td>
                     </tr>
                     </tbody>
