@@ -8,16 +8,10 @@
 <head>
     <title>Settings
         <%
-<<<<<<< HEAD
             String name = (String) request.getSession().getAttribute("name");
             String email = (String) request.getSession().getAttribute("email");
             Integer id = (Integer) request.getSession().getAttribute("id");
             Integer rootID = (Integer) request.getSession().getAttribute("rootID");
-=======
-            String name = (String) request.getAttribute("name");
-            String email = (String) request.getAttribute("email");
-            Integer id = (Integer) request.getAttribute("id");
->>>>>>> 4bdb89bee5be4da0259be9a5e14caa8ad7298760
         %>
     </title>
     <meta charset="UTF-8">
