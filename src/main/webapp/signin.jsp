@@ -32,6 +32,7 @@
         } else if (request.getSession().getAttribute("newUser") != null) {
             Boolean newUser = (Boolean) request.getSession().getAttribute("newUser");
             if (newUser) {
+                newUser = false;
         %>
         <br>
 
