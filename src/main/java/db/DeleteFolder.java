@@ -16,7 +16,8 @@ public class DeleteFolder {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try{
-            HashSet<File> setOfFiles =  ListFilesInFolder.list(id);
+            ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+            HashSet<File> setOfFiles =  listFilesInFolder.list(id);
             if(setOfFiles != null && setOfFiles.size() != 0) {
                 for (File file : setOfFiles) {
                     DeleteFile.delete(file.getId());

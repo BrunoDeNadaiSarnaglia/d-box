@@ -92,7 +92,8 @@ public class SignInRequest extends HttpServlet {
             HashSet<File> fileList = null;
             HashSet<Folder> folderList = null;
             if (id != null) {
-                fileList = ListFilesInFolder.list(id);
+                ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+                fileList = listFilesInFolder.list(id);
                 ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
                 folderList = listFoldersInFolder.list(id);
             }
