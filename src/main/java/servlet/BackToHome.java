@@ -82,7 +82,11 @@ public class BackToHome extends HttpServlet {
         Integer id = Integer.valueOf(request.getParameter("id"));
 
 	HttpSession httpSession = request.getSession();
-        HashSet<File> fileList = ListFilesInFolder.list(id);
+
+
+        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+        HashSet<File> fileList = listFilesInFolder.list(id);
+
         HashSet<Folder> folderList = new ListFoldersInFolder().list(id);
 
 

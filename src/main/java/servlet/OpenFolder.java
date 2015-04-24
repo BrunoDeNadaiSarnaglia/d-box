@@ -69,10 +69,12 @@ public class OpenFolder extends HttpServlet {
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
-        HashSet<File> fileList = ListFilesInFolder.list(idParent);
+        
 
-        HashSet<Folder> folderList = new ListFoldersInFolder().list(idParent);
-
+        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+        HashSet<File> fileList = listFilesInFolder.list(idParent);
+        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
@@ -97,7 +99,8 @@ public class OpenFolder extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-        HashSet<File> fileList = ListFilesInFolder.list(idParent);
+        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+        HashSet<File> fileList = listFilesInFolder.list(idParent);
         ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
         HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
         HttpSession httpSession = request.getSession();

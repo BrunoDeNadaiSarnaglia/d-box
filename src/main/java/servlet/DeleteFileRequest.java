@@ -80,7 +80,8 @@ public class DeleteFileRequest extends HttpServlet {
         Integer parentID = Integer.valueOf(request.getParameter("id"));
         Integer deleteID = Integer.valueOf(request.getParameter("deleteID"));
         DeleteFile.delete(deleteID);
-        HashSet<File> fileList = ListFilesInFolder.list(parentID);
+        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
+        HashSet<File> fileList = listFilesInFolder.list(parentID);
         HashSet<Folder> folderList = new ListFoldersInFolder().list(parentID);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
