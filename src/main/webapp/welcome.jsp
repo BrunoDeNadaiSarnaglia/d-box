@@ -76,8 +76,8 @@
                     <br>
 
                     <form class="form-signin" action="AddFileToCurrentFolder" method="POST">
-                        <input type="text" name="file_name" placeholder="File Name" class="form-control">
-                        <input type="url" name="url" placeholder="URL" class="form-control">
+                        <input type="text" name="file_name" placeholder="File Name*" class="form-control" required>
+                        <input type="url" name="url" placeholder="URL*" class="form-control" required>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
                 </div>
@@ -88,7 +88,7 @@
                     <br>
 
                     <form class="form-signin" action="AddFolderToCurrentFolder" method="POST">
-                        <input type="text" name="folder_name" placeholder="Folder Name" class="form-control">
+                        <input type="text" name="folder_name" placeholder="Folder Name*" class="form-control" required>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a folder</button>
                     </form>
                 </div>
