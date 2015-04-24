@@ -6,16 +6,17 @@ import java.sql.PreparedStatement;
 /**
  * Created by Bruno on 4/24/2015.
  */
-public class UpdatePassword {
+public class UpdateFile {
 
-    public static void update(String email, String password) {
+
+    public static void update(Integer id, String name) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("UPDATE users SET password = ? WHERE email = ?");
-            preparedStatement.setString(1, password);
-            preparedStatement.setString(2, email);
+            preparedStatement = connection.prepareStatement("UPDATE file SET name = ? WHERE id = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
