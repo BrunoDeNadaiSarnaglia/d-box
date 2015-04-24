@@ -13,7 +13,6 @@ import java.util.HashSet;
 public class DeleteFolder {
 
     public void delete(Integer id){
-        System.out.println(id);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try{
@@ -26,9 +25,7 @@ public class DeleteFolder {
             ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
             HashSet<Folder> setOfFolder=  listFoldersInFolder.list(id);
             if(setOfFolder!= null && setOfFolder.size() != 0) {
-                System.out.println("size: " + setOfFolder.size());
                 for (Folder folder : setOfFolder) {
-                    System.out.println(folder.getId());
                     DeleteFolder deleteFolder = new DeleteFolder();
                     deleteFolder.delete(folder.getId());
                 }
