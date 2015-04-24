@@ -25,10 +25,10 @@ public class DeleteAccount {
             if (resultSet.next()){
                 int id = resultSet.getInt("id");
                 DeleteFolder.delete(id);
-                preparedStatement = connection.prepareStatement("DELETE FROM users WHERE email = ?");
-                preparedStatement.setString(1, email);
-                preparedStatement.executeUpdate();
             }
+            preparedStatement = connection.prepareStatement("DELETE FROM users WHERE email = ?");
+            preparedStatement.setString(1, email);
+            preparedStatement.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
