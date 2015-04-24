@@ -27,9 +27,9 @@ public class ListFoldersInFolder {
             preparedStatement = connection.prepareStatement("SELECT id, name FROM folder WHERE id IN (SELECT childId FROM contain WHERE parentID = ?)");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
-            System.out.println("resultset " + resultSet.toString());
+            System.out.println(id + "resultset " + resultSet.toString());
             while(resultSet.next()) {
-                System.out.println(id + " : " + resultSet.getInt("id"));
+                System.out.println("sadasdsa");
                 setOfFolders.add(new Folder(resultSet.getInt("id"), resultSet.getString("name")));
             }
         } catch (Exception e) {
