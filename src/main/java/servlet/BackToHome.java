@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -79,30 +80,17 @@ public class BackToHome extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer id = Integer.valueOf(request.getParameter("id"));
-<<<<<<< HEAD
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
 
 	HttpSession httpSession = request.getSession();
         HashSet<File> fileList = ListFilesInFolder.list(id);
-        HashSet<Folder> folderList = ListFoldersInFolder.list(id);
+        HashSet<Folder> folderList = new ListFoldersInFolder().list(id);
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", id);
-        httpSession.setAttribute("rootID", rootID);
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
 	response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
-=======
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/welcome.jsp");
-        HashSet<File> fileList = ListFilesInFolder.list(id);
-        HashSet<Folder> folderList = new ListFoldersInFolder().list(id);
-        request.setAttribute("id", id);
-        request.setAttribute("fileList", fileList);
-        request.setAttribute("folderList", folderList);
-        request.setAttribute("folderList", folderList);
-        dispatcher.forward(request, response);
->>>>>>> 4f3dd00c1acc0915bc2cb933d645f10cd6b63910
+
     }
 
     /**

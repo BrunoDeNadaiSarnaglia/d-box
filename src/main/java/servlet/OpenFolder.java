@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -68,30 +69,17 @@ public class OpenFolder extends HttpServlet {
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         HashSet<File> fileList = ListFilesInFolder.list(idParent);
-<<<<<<< HEAD
-        HashSet<Folder> folderList = ListFoldersInFolder.list(idParent);
+
+        HashSet<Folder> folderList = new ListFoldersInFolder().list(idParent);
 
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-        httpSession.setAttribute("rootID", rootID);
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
-=======
-        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/welcome.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("id", idParent);
-        request.setAttribute("rootID", rootID);
-        request.setAttribute("fileList", fileList);
-        request.setAttribute("folderList", folderList);
-        dispatcher.forward(request, response);
->>>>>>> 4f3dd00c1acc0915bc2cb933d645f10cd6b63910
+
     }
 
     /**

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -89,25 +90,13 @@ public class AddFolderToCurrentFolder extends HttpServlet {
             ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
             folderList = listFoldersInFolder.list(idParent);
         }
-<<<<<<< HEAD
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-        httpSession.setAttribute("rootID", rootID);
-        httpSession.setAttribute("fileList", fileList);
+                httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
-=======
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/welcome.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("id", idParent);
-        request.setAttribute("fileList", fileList);
-        request.setAttribute("folderList", folderList);
-        dispatcher.forward(request, response);
->>>>>>> 4f3dd00c1acc0915bc2cb933d645f10cd6b63910
     }
 
     /**
