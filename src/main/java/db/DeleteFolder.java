@@ -37,7 +37,7 @@ public class DeleteFolder {
             preparedStatement = connection.prepareStatement("DELETE FROM folder WHERE id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-            preparedStatement = connection.prepareStatement("DELETE FROM contain WHERE parentId = ?");
+            preparedStatement = connection.prepareStatement("DELETE FROM contain WHERE childId = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
 
