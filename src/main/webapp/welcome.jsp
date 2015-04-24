@@ -136,7 +136,7 @@
                         <td><span class="glyphicon glyphicon-folder-open" style="margin: 0; padding: 0;"></span></td>
                         <td><% out.print(folder.getName()); %></td>
                         <td>
-                            <form action="OpenFolder" method="POST">
+                            <form action="OpenFolder" method="GET">
                                 <input type="hidden" name="name" value="<% out.print(name); %>">
                                 <input type="hidden" name="email" value="<% out.print(email); %>">
                                 <input type="hidden" name="id" value="<% out.print(folder.getId()); %>">
