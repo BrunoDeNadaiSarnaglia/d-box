@@ -12,7 +12,7 @@ import java.util.HashSet;
  */
 public class DeleteFolder {
 
-    public static void delete(Integer id){
+    public void delete(Integer id){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try{
@@ -22,7 +22,8 @@ public class DeleteFolder {
             }
             HashSet<Folder> setOfFolder=  ListFoldersInFolder.list(id);
             for(Folder folder : setOfFolder){
-                DeleteFolder.delete(folder.getId());
+                DeleteFolder deleteFolder = new DeleteFolder();
+                deleteFolder.delete(folder.getId());
             }
             connection = ConnectionConfigure.getConnection();
             preparedStatement = connection.prepareStatement("DELETE FROM folder WHERE id = ?");
