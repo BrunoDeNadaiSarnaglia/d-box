@@ -82,21 +82,15 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         String folderName = request.getParameter("folder_name");
         addFolder.add(idParent, folderName);
-        HashSet<File> fileList = null;
-        HashSet<Folder> folderList = null;
-        if (idParent != null) {
-            ListFilesInFolder listFilesInFolder =new ListFilesInFolder();
-            fileList = listFilesInFolder.list(idParent);
-            ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-            folderList = listFoldersInFolder.list(idParent);
-        }
+        HashSet<File> fileList = new ListFilesInFolder().list(idParent);
+        HashSet<Folder> folderList = new ListFoldersInFolder().list(idParent);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
+        httpSession.setAttribute("showFriends", false);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
 
     }
