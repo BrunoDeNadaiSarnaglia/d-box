@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -78,27 +79,19 @@ public class DeleteFolderRequest extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         Integer parentID = Integer.valueOf(request.getParameter("id"));
         Integer deleteID = Integer.valueOf(request.getParameter("deleteID"));
         DeleteFolder deleteFolder = new DeleteFolder();
         deleteFolder.delete(deleteID);
-        HashSet<File> fileList = null;
-        HashSet<Folder> folderList = null;
-        if (parentID != null) {
-            fileList = ListFilesInFolder.list(parentID);
-            ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-            folderList = listFoldersInFolder.list(parentID);
-        }
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/welcome.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("rootID", rootID);
-        request.setAttribute("id", parentID);
-        request.setAttribute("fileList", fileList);
-        request.setAttribute("folderList", folderList);
-        dispatcher.forward(request, response);
+        HashSet<File> fileList = ListFilesInFolder.list(parentID);
+        HashSet<Folder> folderList = new ListFoldersInFolder().list(parentID);
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("name", name);
+        httpSession.setAttribute("email", email);
+        httpSession.setAttribute("id", parentID);
+        httpSession.setAttribute("fileList", fileList);
+        httpSession.setAttribute("folderList", folderList);
+        response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
     /**
