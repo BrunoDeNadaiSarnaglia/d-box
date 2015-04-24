@@ -19,8 +19,8 @@
     <form class="form-signin" action="SignInRequest" method="POST">
         <a href="index.jsp"><img src="img/logo_dbox.png" alt="DBox logo" width="128"
                                  class="img-responsive center-block"/></a>
-        <% if (request.getSession().getAttribute("loginError") != null) {
-            Boolean error = (Boolean) request.getSession().getAttribute("loginError");
+        <% if (request.getAttribute("loginError") != null) {
+            Boolean error = (Boolean) request.getAttribute("loginError");
             if (error) {
         %>
         <br>
@@ -29,10 +29,9 @@
             <strong>Enter a valid email address</strong>
         </div>
         <% }
-        } else if (request.getSession().getAttribute("newUser") != null) {
-            Boolean newUser = (Boolean) request.getSession().getAttribute("newUser");
+        } else if (request.getAttribute("newUser") != null) {
+            Boolean newUser = (Boolean) request.getAttribute("newUser");
             if (newUser) {
-                newUser = false;
         %>
         <br>
 
