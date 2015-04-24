@@ -18,7 +18,7 @@ public class ListFoldersInFolder {
 
     private static HashSet<Folder> setOfFolders = new HashSet<Folder>();
 
-    public static void list(Integer id) {
+    public static HashSet<Folder> list(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -55,6 +55,7 @@ public class ListFoldersInFolder {
                 }
             }
         }
+        return setOfFolders;
     }
 
 }

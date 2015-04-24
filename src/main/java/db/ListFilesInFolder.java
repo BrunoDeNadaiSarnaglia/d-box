@@ -16,7 +16,7 @@ public class ListFilesInFolder {
 
     private static HashSet<File> setOfFiles = new HashSet<File>();
 
-    public static void list(Integer id) {
+    public static HashSet<File> list(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -53,6 +53,7 @@ public class ListFilesInFolder {
                 }
             }
         }
+        return setOfFiles;
     }
 
 }
