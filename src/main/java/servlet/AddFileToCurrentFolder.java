@@ -87,6 +87,8 @@ public class AddFileToCurrentFolder extends HttpServlet {
         HashSet<Folder> folderList = null;
         if (idParent != null) {
             fileList = ListFilesInFolder.list(idParent);
+
+            
             ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
             folderList = listFoldersInFolder.list(idParent);
         }
