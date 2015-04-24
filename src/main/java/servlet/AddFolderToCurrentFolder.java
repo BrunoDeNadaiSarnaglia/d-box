@@ -97,6 +97,7 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         request.setAttribute("fileList", fileList);
         request.setAttribute("folderList", folderList);
         dispatcher.forward(request, response);
+
     }
 
     /**
