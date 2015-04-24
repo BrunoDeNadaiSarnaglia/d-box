@@ -47,12 +47,15 @@
                 <input type="hidden" name="email" value="<% out.print(email); %>">
                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
                 <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
-                <button class="btn btn-primary" type="submit"
-                        style="margin-top: 7px; background-color: #333; border-color: #333;">Settings
+                <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
+                    Settings
                 </button>
             </form>
             <form class="navbar-form navbar-left">
                 <input type="text" class="form-control" placeholder="Search friends...">
+                <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
             </form>
         </div>
     </div>
