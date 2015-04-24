@@ -74,13 +74,18 @@ public class RequestPassword extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        UpdatePassword.update(email, password);
+        String password1 = request.getParameter("password1");
+        String password2 = request.getParameter("password2");
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/settings.jsp");
         request.setAttribute("name", name);
         request.setAttribute("email", email);
-        request.setAttribute("changedPassword", true);
+        if (password1.equals(password2)) {
+            UpdatePassword.update(email, password1);
+            request.setAttribute("changedPassword", true);
+        } else {
+            request.setAttribute("changedPassword", false);
+        }
         dispatcher.forward(request, response);
     }
 
