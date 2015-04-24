@@ -69,23 +69,23 @@
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
 
             <div class="row placeholders">
-                <form action="AddFileFolderPage" method="POST">
-                    <div class="col-md-6 placeholder">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
-                            <h4>Add a file</h4>
-                        </a>
-                    </div>
-                </form>
-                <form action="AddFolder" method="POST">
-                    <div class="col-md-6 placeholder">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"
-                                  style="font-size: 300%;"></span>
-                            <h4>Add a folder</h4>
-                        </a>
-                    </div>
-                </form>
+                <div class="col-md-6 placeholder">
+                    <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
+
+                    <form class="form-signin" action="AddFileToCurrentFolder" method="POST">
+                        <input type="text" name="file_name" placeholder="File Name" class="form-control">
+                        <input type="url" name="url" placeholder="URL" class="form-control">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
+                    </form>
+                </div>
+                <div class="col-md-6 placeholder">
+                    <span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="font-size: 300%;"></span>
+
+                    <form class="form-signin" action="AddFolderToCurrentFolder" method="POST">
+                        <input type="text" name="folder_name" placeholder="Folder Name" class="form-control">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
+                    </form>
+                </div>
             </div>
             <h2 class="sub-header">Your files</h2>
 
