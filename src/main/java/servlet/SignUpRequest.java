@@ -85,7 +85,6 @@ public class SignUpRequest extends HttpServlet {
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/signin.jsp");
         request.setAttribute("newUser", true);
-        response.sendRedirect(getServletContext().getContextPath() + "signin.jsp");
         dispatcher.forward(request, response);
     }
 
