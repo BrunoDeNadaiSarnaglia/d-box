@@ -268,10 +268,14 @@
             %>
             <h3>You have no friends yet.</h3>
             <%
+                }
                 if (request.getSession().getAttribute("friendsAlike") != null) {
             %>
             <h3>Possible friends</h3>
-
+            <%
+                HashSet<User> friendsAlike = (HashSet<User>) request.getSession().getAttribute("friendsAlike");
+                if (friendsAlike.size() > 0) {
+            %>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <col width="40%">
@@ -286,9 +290,7 @@
                     </thead>
                     <tbody>
                     <%
-                        HashSet<User> friendsAlike = (HashSet<User>) request.getSession().getAttribute("friendsAlike");
-                        if (friendsAlike.size() > 0) {
-                            for (User user : friendsAlike) {
+                        for (User user : friendsAlike) {
                     %>
                     <tr>
                         <td><% out.print(user.getName()); %></td>
@@ -314,7 +316,6 @@
             } else { %>
             <h3>Your search had no results.</h3>
             <%
-                            }
                         }
                     }
                 }
