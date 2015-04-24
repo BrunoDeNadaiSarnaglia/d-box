@@ -1,6 +1,7 @@
 package servlet;
 
 import db.DeleteFile;
+import db.DeleteFriend;
 import db.ListFilesInFolder;
 import db.ListFoldersInFolder;
 import rowClasses.File;
@@ -80,17 +81,13 @@ public class Unfriend extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer parentID = Integer.valueOf(request.getParameter("id"));
-        Integer deleteID = Integer.valueOf(request.getParameter("deleteID"));
-        DeleteFile.delete(deleteID);
-        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
-        HashSet<File> fileList = listFilesInFolder.list(parentID);
-        HashSet<Folder> folderList = new ListFoldersInFolder().list(parentID);
+        String friendEmail = request.getParameter("friendEmail");
+        DeleteFriend.delete(email, friendEmail);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", parentID);
-        httpSession.setAttribute("fileList", fileList);
-        httpSession.setAttribute("folderList", folderList);
+        httpSession.setAttribute("showFriends", true);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
