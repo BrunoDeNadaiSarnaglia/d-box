@@ -62,9 +62,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active">My DBox<span class="sr-only">(current)</span></li>
-            </ul>
             <form action="ShowFriendsRequest" method="POST">
                 <input type="hidden" name="name" value="<% out.print(name); %>">
                 <input type="hidden" name="email" value="<% out.print(email); %>">
@@ -77,7 +74,7 @@
             </form>
             <ul class="nav nav-sidebar">
                 <li>
-                    <button class="btn btn-block btn-success" onclick="index.jsp">Logout</button>
+                    <button class="btn btn-block btn-success" onclick="location.href = 'index.jsp'">Logout</button>
                 </li>
             </ul>
         </div>
