@@ -15,10 +15,10 @@ import java.io.IOException;
  * @version 1.0
  */
 @WebServlet(
-        name = "RequestPassword",
-        urlPatterns = {"/RequestPassword"}
+        name = "PasswordUpdateRequest",
+        urlPatterns = {"/PasswordUpdateRequest"}
 )
-public class RequestPassword extends HttpServlet {
+public class PasswordUpdateRequest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
