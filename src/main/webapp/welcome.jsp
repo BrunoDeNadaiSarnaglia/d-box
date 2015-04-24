@@ -14,6 +14,7 @@
             String name = (String) request.getSession().getAttribute("name");
             String email = (String) request.getSession().getAttribute("email");
             Integer thisID = (Integer) request.getSession().getAttribute("id");
+            Integer backID = (Integer) request.getSession().getAttribute("back");
             HashSet<File> fileList = (HashSet<File>) request.getSession().getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getSession().getAttribute("folderList");
             out.print(name);
@@ -114,6 +115,15 @@
                 </div>
             </div>
             <h2 class="sub-header">Your files</h2>
+            <%
+                if (thisID != null && backID != null && (thisID != backID)) {
+            %>
+            <form action="GoBack" method="POST">
+                <button class="btn btn-block btn-success" style="width: 200px;" type="submit">Go back</button>
+            </form>
+            <%
+                }
+            %>
             <% if ((fileList != null && fileList.size() > 0) || (folderList != null && folderList.size() > 0)) {
             %>
             <div class="table-responsive">
