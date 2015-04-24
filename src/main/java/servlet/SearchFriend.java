@@ -1,5 +1,6 @@
 package servlet;
 
+import db.FindFriends;
 import db.ListFilesInFolder;
 import db.ListFoldersInFolder;
 import db.showPeople;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -83,12 +85,14 @@ public class SearchFriend extends HttpServlet {
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         String friendName = request.getParameter("friendName");
         HashSet<User> friendsAlike = showPeople.show(friendName);
+        ArrayList<User> userList = FindFriends.find(email);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
         httpSession.setAttribute("friendsAlike", friendsAlike);
         httpSession.setAttribute("showFriends", true);
+        httpSession.setAttribute("userList", userList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
