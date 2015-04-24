@@ -1,5 +1,10 @@
 package servlet;
 
+import db.ListFilesInFolder;
+import db.ListFoldersInFolder;
+import rowClasses.File;
+import rowClasses.Folder;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashSet;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
@@ -72,10 +78,18 @@ public class BackToHome extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/welcome.jsp");
+        HashSet<File> fileList = ListFilesInFolder.list(id);
+        HashSet<Folder> folderList = ListFoldersInFolder.list(id);
         request.setAttribute("name", name);
         request.setAttribute("email", email);
+        request.setAttribute("id", id);
+        request.setAttribute("rootID", rootID);
+        request.setAttribute("fileList", fileList);
+        request.setAttribute("folderList", folderList);
         dispatcher.forward(request, response);
     }
 

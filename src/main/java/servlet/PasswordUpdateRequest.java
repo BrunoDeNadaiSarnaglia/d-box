@@ -74,12 +74,16 @@ public class PasswordUpdateRequest extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/settings.jsp");
         request.setAttribute("name", name);
         request.setAttribute("email", email);
+        request.setAttribute("id", id);
+        request.setAttribute("rootID", rootID);
         boolean changedPassword = false;
         if (password1 != null && password2 != null) {
             if (password1.equals(password2)) {

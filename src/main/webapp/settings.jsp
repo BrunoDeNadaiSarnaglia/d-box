@@ -10,6 +10,8 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
+            Integer id = (Integer) request.getAttribute("id");
+            Integer rootID = (Integer) request.getAttribute("rootID");
         %>
     </title>
     <meta charset="UTF-8">
@@ -44,17 +46,21 @@
     <form class="form-signin" action="PasswordUpdateRequest" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
+        <input type="hidden" name="id" value="<% out.print(id);%>">
+        <input type="hidden" name="rootID" value="<% out.print(rootID);%>">
         <input type="password" name="password1" class="form-control" placeholder="Enter new password*" required>
         <input type="password" name="password2" class="form-control" placeholder="Enter new password again*" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Set new password</button>
     </form>
-    <form class="form-signin" action="RequestDelete" method="POST">
+    <form class="form-signin" action="DeleteUser" method="POST">
         <input type="hidden" name="email" value="<% out.print(email);%>">
         <button class="btn btn-lg btn-danger btn-primary btn-block" type="submit">Delete my account</button>
     </form>
     <form class="form-signin" action="BackToHome" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
+        <input type="hidden" name="id" value="<% out.print(id);%>">
+        <input type="hidden" name="rootID" value="<% out.print(rootID);%>">
         <button class="btn btn-default btn-lg btn-block" type="submit">
             <span class="glyphicon glyphicon-align-left glyphicon-arrow-left" aria-hidden="true"></span> Back
         </button>

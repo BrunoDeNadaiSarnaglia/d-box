@@ -1,5 +1,11 @@
 package servlet;
 
+import db.DeleteAccount;
+import db.ListFilesInFolder;
+import db.ListFoldersInFolder;
+import rowClasses.File;
+import rowClasses.Folder;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,16 +13,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashSet;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
  * @version 1.0
  */
 @WebServlet(
-        name = "SettingsPage",
-        urlPatterns = {"/SettingsPage"}
+        name = "DeleteUser",
+        urlPatterns = {"/DeleteUser"}
 )
-public class SettingsPage extends HttpServlet {
+public class DeleteUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -70,16 +77,10 @@ public class SettingsPage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
         String email = request.getParameter("email");
-        Integer id = Integer.valueOf(request.getParameter("id"));
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
+        DeleteAccount.delete(email);
         RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/settings.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("id", id);
-        request.setAttribute("rootID", rootID);
+        dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -42,8 +42,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form action="SettingsPage" method="POST">
-                <input type="hidden" name="name" value="<% out.print(name);%>">
-                <input type="hidden" name="email" value="<% out.print(email);%>">
+                <input type="hidden" name="name" value="<% out.print(name); %>">
+                <input type="hidden" name="email" value="<% out.print(email); %>">
+                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                 <button class="btn btn-primary" type="submit"
                         style="margin-top: 7px; background-color: #333; border-color: #333;">Settings
                 </button>
