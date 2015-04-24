@@ -7,6 +7,8 @@
 <%@ page import="rowClasses.Folder" %>
 <%@ page import="java.util.HashSet" %>
 <%@ page import="db.IdByEmail" %>
+<%@ page import="rowClasses.User" %>
+<%@ page import="java.util.ArrayList" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html lang="en">
 <head>
@@ -114,6 +116,8 @@
                 <div class="col-md-2 placeholder">
                 </div>
             </div>
+            <% if (showFriends == null || (!showFriends)) {
+            %>
             <h2 class="sub-header">Your files</h2>
             <%
                 if (thisID != null && email != null && IdByEmail.getId(email) != null && !thisID.equals(IdByEmail.getId(email))) {
@@ -203,10 +207,26 @@
             <%
             } else {
             %>
-            <h3>You have no files or folders</h3>
+            <h3>You have no files or folders here.</h3>
             <%
+                } /* End of case when you do not show your friends */
+            } else { /* Case when you do show friends */
+            %>
+            <h2>Your friends</h2>
+            <%
+                ArrayList<User> userList = (ArrayList<User>) request.getSession().getAttribute("userList");
+                if (userList != null && userList.size() > 0) {
+            %>
+
+            <%
+            } else {
+            %>
+            <h3>You have no friends yet.</h3>
+            <%
+                    }
                 }
             %>
+
         </div>
     </div>
 </div>

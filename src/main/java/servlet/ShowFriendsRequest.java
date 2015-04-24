@@ -1,9 +1,11 @@
 package servlet;
 
+import db.FindFriends;
 import db.ListFilesInFolder;
 import db.ListFoldersInFolder;
 import rowClasses.File;
 import rowClasses.Folder;
+import rowClasses.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -65,20 +68,12 @@ public class ShowFriendsRequest extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-
-
-        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
-        HashSet<File> fileList = listFilesInFolder.list(idParent);
-        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-        httpSession.setAttribute("fileList", fileList);
-        httpSession.setAttribute("folderList", folderList);
+        httpSession.setAttribute("showFriends", true);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
-
     }
 
     /**
@@ -95,16 +90,13 @@ public class ShowFriendsRequest extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-        ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
-        HashSet<File> fileList = listFilesInFolder.list(idParent);
-        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
+        ArrayList<User> userList = FindFriends.find(email);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-        httpSession.setAttribute("fileList", fileList);
-        httpSession.setAttribute("folderList", folderList);
+        httpSession.setAttribute("showFriends", true);
+        httpSession.setAttribute("userList", userList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
