@@ -16,9 +16,9 @@ import java.util.HashSet;
  */
 public class ListFoldersInFolder {
 
-    private static HashSet<Folder> setOfFolders = new HashSet<Folder>();
+    private HashSet<Folder> setOfFolders = new HashSet<Folder>();
 
-    public static HashSet<Folder> list(Integer id) {
+    public HashSet<Folder> list(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
