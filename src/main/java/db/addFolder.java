@@ -29,8 +29,8 @@ public class addFolder {
                 idCount = Math.max(resultSet.getInt("id") + 1, idCount);
             }
             preparedStatement = connection.prepareStatement("INSERT INTO folder (id, name) VALUES (?,?)");
-            preparedStatement.setString(1, name);
-            preparedStatement.setInt(2, idCount);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(1, idCount);
             preparedStatement.executeUpdate();
 
             preparedStatement = connection.prepareStatement("INSERT INTO contain (parentId, childId) VALUES (?,?)");
