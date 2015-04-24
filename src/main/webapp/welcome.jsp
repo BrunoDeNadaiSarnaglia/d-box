@@ -63,17 +63,22 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
+                <li class="active">My DBox<span class="sr-only">(current)</span></li>
             </ul>
             <form action="ShowFriendsRequest" method="POST">
+                <input type="hidden" name="name" value="<% out.print(name); %>">
+                <input type="hidden" name="email" value="<% out.print(email); %>">
+                <input type="hidden" name="id" value="<% out.print(thisID); %>">
                 <ul class="nav nav-sidebar">
                     <li>
-                        <button class="btn btn-block btn-primary" type="submit">Show my friends</button>
+                        <button class="btn btn-block btn-success" type="submit">Show my friends</button>
                     </li>
                 </ul>
             </form>
             <ul class="nav nav-sidebar">
-                <li><a href="index.jsp">Logout</a></li>
+                <li>
+                    <button class="btn btn-block btn-success" onclick="index.jsp">Logout</button>
+                </li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
