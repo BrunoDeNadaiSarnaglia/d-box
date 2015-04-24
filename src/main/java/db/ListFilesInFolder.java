@@ -1,22 +1,20 @@
 package db;
 
-
+import rowClasses.File;
 import rowClasses.Folder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * @author Bruno de Nadai Sarnaglia <denadai2@illinois.edu>
- * @version 1.0
+ * Created by Bruno on 4/24/2015.
  */
-public class ListFoldersInFolder {
+public class ListFilesInFolder {
 
-    private static HashSet<Folder> setOfFolders = new HashSet<Folder>();
+
+    private static HashSet<File> setOfFiles = new HashSet<File>();
 
     public static void list(Integer id) {
         Connection connection = null;
@@ -24,11 +22,11 @@ public class ListFoldersInFolder {
         ResultSet resultSet = null;
         try {
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT id, name FROM contain, folder WHERE parentId = ? AND childId = id");
+            preparedStatement = connection.prepareStatement("SELECT id, URL, name FROM contain, file WHERE parentId = ? AND childId = id");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                setOfFolders.add(new Folder(resultSet.getInt("id"), resultSet.getString("name")));
+                setOfFiles.add(new File(resultSet.getInt("id"), resultSet.getString("URL"),resultSet.getString("name")));
             }
         } catch (Exception e) {
             e.printStackTrace();
