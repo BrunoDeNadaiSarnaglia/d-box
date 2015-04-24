@@ -95,7 +95,8 @@ public class SignInRequest extends HttpServlet {
             HashSet<Folder> folderList = null;
             if (id != null) {
                 fileList = ListFilesInFolder.list(id);
-                folderList = ListFoldersInFolder.list(id);
+                ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+                folderList = listFoldersInFolder.list(id);
             }
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("name", SingInQuery.username);

@@ -68,7 +68,8 @@ public class OpenFolder extends HttpServlet {
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         HashSet<File> fileList = ListFilesInFolder.list(idParent);
-        HashSet<Folder> folderList = ListFoldersInFolder.list(idParent);
+        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/welcome.jsp");
         request.setAttribute("name", name);
@@ -96,7 +97,8 @@ public class OpenFolder extends HttpServlet {
         Integer idParent = Integer.valueOf(request.getParameter("id"));
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         HashSet<File> fileList = ListFilesInFolder.list(idParent);
-        HashSet<Folder> folderList = ListFoldersInFolder.list(idParent);
+        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+        HashSet<Folder> folderList = listFoldersInFolder.list(idParent);
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/welcome.jsp");
         request.setAttribute("name", name);
