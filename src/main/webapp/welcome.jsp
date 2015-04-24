@@ -111,19 +111,41 @@
             %>
             <div class="table-responsive">
                 <table class="table table-striped">
+                    <col>
                     <col width="30%">
                     <col>
                     <thead>
                     <tr>
+                        <th>Type</th>
                         <th>Name</th>
                         <th>URL</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <% if (folderList != null && folderList.size() > 0) {
+                        for (Folder folder : folderList) {
+                    %>
                     <tr>
-                        <td>File Name whatever</td>
-                        <td>simple_url.com</td>
+                        <td>Folder</td>
+                        <td><% out.print(folder.getName()); %></td>
+                        <td></td>
                     </tr>
+                    <%
+                            }
+                        }
+                        if (fileList != null && fileList.size() > 0) {
+                            for (File file : fileList) {
+                    %>
+                    <tr>
+                        <td>File</td>
+                        <td><% out.print(file.getName()); %></td>
+                        <td><a href="<% out.print(file.getURL()); %>" target="_blank"><%
+                            out.print(file.getURL()); %></a></td>
+                    </tr>
+                    <%
+                            }
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>
