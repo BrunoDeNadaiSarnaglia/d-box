@@ -80,6 +80,7 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
+        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         String folderName = request.getParameter("folder_name");
         addFolder.add(idParent, folderName);
         HashSet<File> fileList = null;
@@ -93,6 +94,7 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         request.setAttribute("name", name);
         request.setAttribute("email", email);
         request.setAttribute("id", idParent);
+        request.setAttribute("rootID", rootID);
         request.setAttribute("fileList", fileList);
         request.setAttribute("folderList", folderList);
         dispatcher.forward(request, response);

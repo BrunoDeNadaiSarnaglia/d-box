@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
-import db.IdByEmail;
 import db.ListFilesInFolder;
 import db.ListFoldersInFolder;
-import db.SingInQuery;
+import db.addFile;
 import rowClasses.File;
 import rowClasses.Folder;
 
@@ -26,10 +20,10 @@ import java.util.HashSet;
  * @version 1.0
  */
 @WebServlet(
-        name = "SignInRequest",
-        urlPatterns = {"/SignInRequest"}
+        name = "OpenFolder",
+        urlPatterns = {"/OpenFolder"}
 )
-public class SignInRequest extends HttpServlet {
+public class OpenFolder extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -69,8 +63,7 @@ public class SignInRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
-        view.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -84,32 +77,25 @@ public class SignInRequest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        RequestDispatcher dispatcher;
-        Integer id = null;
-        if (SingInQuery.check(email, password)) {
-            id = IdByEmail.getId(email);
-            HashSet<File> fileList = null;
-            HashSet<Folder> folderList = null;
-            if (id != null) {
-                fileList = ListFilesInFolder.list(id);
-                folderList = ListFoldersInFolder.list(id);
-            }
-            dispatcher = request.getRequestDispatcher("/welcome.jsp");
-            request.setAttribute("name", SingInQuery.username);
-            request.setAttribute("email", email);
-            request.setAttribute("password", password);
-            request.setAttribute("id", id);
-            request.setAttribute("rootID", id);
-            request.setAttribute("fileList", fileList);
-            request.setAttribute("folderList", folderList);
-            dispatcher.forward(request, response);
-        } else {
-            dispatcher = request.getRequestDispatcher("/signin.jsp");
-            request.setAttribute("loginError", true);
-            dispatcher.forward(request, response);
+        Integer idParent = Integer.valueOf(request.getParameter("id"));
+        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
+        HashSet<File> fileList = null;
+        HashSet<Folder> folderList = null;
+        if (idParent != null) {
+            fileList = ListFilesInFolder.list(idParent);
+            folderList = ListFoldersInFolder.list(idParent);
         }
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("/welcome.jsp");
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
+        request.setAttribute("id", idParent);
+        request.setAttribute("rootID", rootID);
+        request.setAttribute("fileList", fileList);
+        request.setAttribute("folderList", folderList);
+        dispatcher.forward(request, response);
     }
 
     /**

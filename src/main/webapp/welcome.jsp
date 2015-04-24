@@ -13,7 +13,8 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
-            Integer id = (Integer) request.getAttribute("id");
+            Integer thisID = (Integer) request.getAttribute("id");
+            Integer rootID = (Integer) request.getAttribute("rootID");
             HashSet<File> fileList = (HashSet<File>) request.getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getAttribute("folderList");
             out.print(name);
@@ -85,7 +86,8 @@
                         <input type="url" name="url" placeholder="URL*" class="form-control" required>
                         <input type="hidden" name="name" value="<% out.print(name); %>">
                         <input type="hidden" name="email" value="<% out.print(email); %>">
-                        <input type="hidden" name="id" value="<% out.print(id); %>">
+                        <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                        <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
                 </div>
@@ -99,7 +101,8 @@
                         <input type="text" name="folder_name" placeholder="Folder Name*" class="form-control" required>
                         <input type="hidden" name="name" value="<% out.print(name); %>">
                         <input type="hidden" name="email" value="<% out.print(email); %>">
-                        <input type="hidden" name="id" value="<% out.print(id); %>">
+                        <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                        <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a folder</button>
                     </form>
                 </div>
@@ -131,13 +134,25 @@
                         <td><span class="glyphicon glyphicon-folder-open" style="margin: 0; padding: 0;"></span></td>
                         <td><% out.print(folder.getName()); %></td>
                         <td>
-                            <form>
-                                <button class="btn btn-block btn-primary" style="width: 200px;">OPEN FOLDER</button>
+                            <form action="OpenFolder" method="POST">
+                                <input type="hidden" name="name" value="<% out.print(name); %>">
+                                <input type="hidden" name="email" value="<% out.print(email); %>">
+                                <input type="hidden" name="id" value="<% out.print(folder.getId()); %>">
+                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
+                                <button class="btn btn-block btn-primary" style="width: 200px;" type="submit">OPEN
+                                    FOLDER
+                                </button>
                             </form>
                         </td>
                         <td>
-                            <form>
-                                <button class="btn btn-block btn-danger" style="width: 200px;">DELETE</button>
+                            <form action="DeleteFolderRequest" method="POST">
+                                <input type="hidden" name="name" value="<% out.print(name); %>">
+                                <input type="hidden" name="email" value="<% out.print(email); %>">
+                                <input type="hidden" name="deleteID" value="<% out.print(folder.getId()); %>">
+                                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
+                                <button class="btn btn-block btn-danger" style="width: 200px;" type="submit">DELETE
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -153,8 +168,14 @@
                         <td><a href="<% out.print(file.getURL()); %>" target="_blank"><%
                             out.print(file.getURL()); %></a></td>
                         <td>
-                            <form>
-                                <button class="btn btn-block btn-danger" style="width: 200px;">DELETE</button>
+                            <form action="DeleteFileRequest" method="POST">
+                                <input type="hidden" name="name" value="<% out.print(name); %>">
+                                <input type="hidden" name="email" value="<% out.print(email); %>">
+                                <input type="hidden" name="deleteID" value="<% out.print(file.getId()); %>">
+                                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
+                                <button class="btn btn-block btn-danger" style="width: 200px;" type="submit">DELETE
+                                </button>
                             </form>
                         </td>
                     </tr>
