@@ -104,7 +104,7 @@ public class SignInRequest extends HttpServlet {
             request.setAttribute("fileList", fileList);
             request.setAttribute("folderList", folderList);
             //dispatcher.forward(request, response);
-            response.sendRedirect("/welcome.do?s=1");
+            response.sendRedirect("/welcome.jsp?s=1");
         } else {
             dispatcher = request.getRequestDispatcher("/signin.jsp");
             request.setAttribute("loginError", true);
