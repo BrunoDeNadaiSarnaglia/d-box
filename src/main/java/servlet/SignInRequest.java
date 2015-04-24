@@ -104,7 +104,7 @@ public class SignInRequest extends HttpServlet {
             httpSession.setAttribute("rootID", id);
             httpSession.setAttribute("fileList", fileList);
             httpSession.setAttribute("folderList", folderList);
-            response.sendRedirect(getServletContext().getContextPath() + "/welcome.jsp");
+            response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
         } else {
             this.doGet(request, response);
         }
