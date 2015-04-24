@@ -79,17 +79,13 @@ public class BackToHome extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer id = Integer.valueOf(request.getParameter("id"));
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/welcome.jsp");
         HashSet<File> fileList = ListFilesInFolder.list(id);
-        ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
-        HashSet<Folder> folderList = listFoldersInFolder.list(id);
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
+        HashSet<Folder> folderList = new ListFoldersInFolder().list(id);
         request.setAttribute("id", id);
-        request.setAttribute("rootID", rootID);
         request.setAttribute("fileList", fileList);
+        request.setAttribute("folderList", folderList);
         request.setAttribute("folderList", folderList);
         dispatcher.forward(request, response);
     }

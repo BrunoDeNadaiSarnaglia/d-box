@@ -15,7 +15,6 @@
             String name = (String) request.getSession().getAttribute("name");
             String email = (String) request.getSession().getAttribute("email");
             Integer thisID = (Integer) request.getSession().getAttribute("id");
-            Integer rootID = IdByEmail.getId(email);
             HashSet<File> fileList = (HashSet<File>) request.getSession().getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getSession().getAttribute("folderList");
             out.print(name);
@@ -46,7 +45,6 @@
                 <input type="hidden" name="name" value="<% out.print(name); %>">
                 <input type="hidden" name="email" value="<% out.print(email); %>">
                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                 <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
                     Settings
                 </button>
@@ -96,7 +94,6 @@
                         <input type="hidden" name="name" value="<% out.print(name); %>">
                         <input type="hidden" name="email" value="<% out.print(email); %>">
                         <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                        <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
                 </div>
@@ -111,7 +108,6 @@
                         <input type="hidden" name="name" value="<% out.print(name); %>">
                         <input type="hidden" name="email" value="<% out.print(email); %>">
                         <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                        <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a folder</button>
                     </form>
                 </div>
@@ -147,7 +143,6 @@
                                 <input type="hidden" name="name" value="<% out.print(name); %>">
                                 <input type="hidden" name="email" value="<% out.print(email); %>">
                                 <input type="hidden" name="id" value="<% out.print(folder.getId()); %>">
-                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                                 <button class="btn btn-block btn-primary" style="width: 200px;" type="submit">OPEN
                                     FOLDER
                                 </button>
@@ -159,7 +154,6 @@
                                 <input type="hidden" name="email" value="<% out.print(email); %>">
                                 <input type="hidden" name="deleteID" value="<% out.print(folder.getId()); %>">
                                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                                 <button class="btn btn-block btn-danger" style="width: 200px;" type="submit">DELETE
                                 </button>
                             </form>
@@ -182,7 +176,6 @@
                                 <input type="hidden" name="email" value="<% out.print(email); %>">
                                 <input type="hidden" name="deleteID" value="<% out.print(file.getId()); %>">
                                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                                <input type="hidden" name="rootID" value="<% out.print(rootID); %>">
                                 <button class="btn btn-block btn-danger" style="width: 200px;" type="submit">DELETE
                                 </button>
                             </form>
