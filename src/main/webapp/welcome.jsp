@@ -6,6 +6,7 @@
 <%@ page import="rowClasses.File" %>
 <%@ page import="rowClasses.Folder" %>
 <%@ page import="java.util.HashSet" %>
+<%@ page import="db.IdByEmail" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@
             String name = (String) request.getSession().getAttribute("name");
             String email = (String) request.getSession().getAttribute("email");
             Integer thisID = (Integer) request.getSession().getAttribute("id");
-            Integer backID = (Integer) request.getSession().getAttribute("back");
             HashSet<File> fileList = (HashSet<File>) request.getSession().getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getSession().getAttribute("folderList");
             out.print(name);
@@ -116,10 +116,13 @@
             </div>
             <h2 class="sub-header">Your files</h2>
             <%
-                if (thisID != null && backID != null && (thisID != backID)) {
+                if (thisID != null && email != null && IdByEmail.getId(email) != null && !thisID.equals(IdByEmail.getId(email))) {
             %>
-            <form action="GoBack" method="POST">
-                <button class="btn btn-block btn-success" style="width: 200px;" type="submit">Go back</button>
+            <form action="OpenFolder" method="POST">
+                <input type="hidden" name="name" value="<% out.print(name); %>">
+                <input type="hidden" name="email" value="<% out.print(email); %>">
+                <input type="hidden" name="id" value="<% out.print(IdByEmail.getId(email)); %>">
+                <button class="btn btn-block btn-success" style="width: 200px;" type="submit">Go back to root</button>
             </form>
             <%
                 }

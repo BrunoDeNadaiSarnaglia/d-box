@@ -101,7 +101,6 @@ public class SignInRequest extends HttpServlet {
             httpSession.setAttribute("name", SingInQuery.username);
             httpSession.setAttribute("email", email);
             httpSession.setAttribute("id", id);
-            httpSession.setAttribute("back", id);
             httpSession.setAttribute("fileList", fileList);
             httpSession.setAttribute("folderList", folderList);
             response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
