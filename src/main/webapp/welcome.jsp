@@ -224,7 +224,42 @@
                 ArrayList<User> userList = (ArrayList<User>) request.getSession().getAttribute("userList");
                 if (userList != null && userList.size() > 0) {
             %>
-
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <col width="40%">
+                    <col width="40%">
+                    <col>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (User user : userList) {
+                    %>
+                    <tr>
+                        <td><% out.print(user.getName()); %></td>
+                        <td><% out.print(user.getEmail()); %></td>
+                        <td>
+                            <form action="Unfriend" method="POST">
+                                <input type="hidden" name="name" value="<% out.print(name); %>">
+                                <input type="hidden" name="email" value="<% out.print(email); %>">
+                                <input type="hidden" name="friendEmail" value="<% out.print(user.getEmail()); %>">
+                                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                                <button class="btn btn-block btn-danger" style="width: 200px;" type="submit">DELETE
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                    </tbody>
+                </table>
+            </div>
             <%
             } else {
             %>
