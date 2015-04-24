@@ -6,7 +6,6 @@ import db.addFile;
 import rowClasses.File;
 import rowClasses.Folder;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -88,12 +87,10 @@ public class AddFileToCurrentFolder extends HttpServlet {
         HashSet<Folder> folderList = null;
         if (idParent != null) {
             fileList = ListFilesInFolder.list(idParent);
-
-
             ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
             folderList = listFoldersInFolder.list(idParent);
         }
-        RequestDispatcher dispatcher;
+
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);

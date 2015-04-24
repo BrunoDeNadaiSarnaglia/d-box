@@ -84,11 +84,14 @@ public class BackToHome extends HttpServlet {
 	HttpSession httpSession = request.getSession();
         HashSet<File> fileList = ListFilesInFolder.list(id);
         HashSet<Folder> folderList = new ListFoldersInFolder().list(id);
+
+
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", id);
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
+
 	response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
 
     }
