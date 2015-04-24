@@ -94,16 +94,11 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", idParent);
-<<<<<<< HEAD
-                httpSession.setAttribute("fileList", fileList);
-        httpSession.setAttribute("folderList", folderList);
-        response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
-=======
+
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
 
->>>>>>> d2101ef8eeb702c6dda83786de728282a2222e0e
     }
 
     /**

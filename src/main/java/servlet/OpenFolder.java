@@ -68,8 +68,7 @@ public class OpenFolder extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
-        
+
 
         ListFilesInFolder listFilesInFolder = new ListFilesInFolder();
         HashSet<File> fileList = listFilesInFolder.list(idParent);
