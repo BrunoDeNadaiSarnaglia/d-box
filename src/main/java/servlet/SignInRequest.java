@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import db.IdByEmail;
 import db.ListFilesInFolder;
 import db.ListFoldersInFolder;
 import db.SingInQuery;
@@ -86,8 +87,13 @@ public class SignInRequest extends HttpServlet {
         String password = request.getParameter("password");
         RequestDispatcher dispatcher;
         if (SingInQuery.check(email, password)) {
-            HashSet<File> fileList = ListFilesInFolder.list(1);
-            HashSet<Folder> folderList = ListFoldersInFolder.list(1);
+            Integer id = IdByEmail.getId(email);
+            HashSet<File> fileList = null;
+            HashSet<Folder> folderList = null;
+            if (id != null) {
+                fileList = ListFilesInFolder.list(id);
+                folderList = ListFoldersInFolder.list(id);
+            }
             dispatcher = request.getRequestDispatcher("/welcome.jsp");
             request.setAttribute("name", SingInQuery.username);
             request.setAttribute("email", email);
