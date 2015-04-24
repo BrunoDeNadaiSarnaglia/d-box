@@ -29,8 +29,8 @@
             <strong>Enter a valid email address</strong>
         </div>
         <% }
-        } else if (request.getAttribute("newUser") != null) {
-            Boolean newUser = (Boolean) request.getAttribute("newUser");
+        } else if (request.getSession().getAttribute("newUser") != null) {
+            Boolean newUser = (Boolean) request.getSession().getAttribute("newUser");
             if (newUser) {
         %>
         <br>
