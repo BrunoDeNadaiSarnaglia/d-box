@@ -81,8 +81,8 @@ public class SearchFriend extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-        String friendEmail = request.getParameter("friend_email");
-        HashSet<User> friendsAlike = showPeople.show(friendEmail);
+        String friendName = request.getParameter("friendName");
+        HashSet<User> friendsAlike = showPeople.show(friendName);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);

@@ -56,9 +56,9 @@
                 <input type="hidden" name="name" value="<% out.print(name); %>">
                 <input type="hidden" name="email" value="<% out.print(email); %>">
                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
-                <input type="text" name="friend_email" class="form-control" placeholder="Search friends email...">
+                <input type="text" name="friendName" class="form-control" placeholder="Search friend name...">
                 <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
-                    <span class="glyphicon glyphicon-search"></span> Add a friend
+                    <span class="glyphicon glyphicon-search"></span> Search for friends
                 </button>
             </form>
         </div>
@@ -271,7 +271,7 @@
                 }
                 if (request.getSession().getAttribute("friendsAlike") != null) {
             %>
-            <h3>Possible friends</h3>
+            <h2>Searching for friends</h2>
             <%
                 HashSet<User> friendsAlike = (HashSet<User>) request.getSession().getAttribute("friendsAlike");
                 if (friendsAlike.size() > 0) {
