@@ -80,15 +80,16 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer idParent = Integer.valueOf(request.getParameter("id"));
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         String folderName = request.getParameter("folder_name");
         addFolder.add(idParent, folderName);
         HashSet<File> fileList = null;
         HashSet<Folder> folderList = null;
         if (idParent != null) {
             fileList = ListFilesInFolder.list(idParent);
-            folderList = ListFoldersInFolder.list(idParent);
+            ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
+            folderList = listFoldersInFolder.list(idParent);
         }
+<<<<<<< HEAD
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
@@ -97,6 +98,16 @@ public class AddFolderToCurrentFolder extends HttpServlet {
         httpSession.setAttribute("fileList", fileList);
         httpSession.setAttribute("folderList", folderList);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
+=======
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("/welcome.jsp");
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
+        request.setAttribute("id", idParent);
+        request.setAttribute("fileList", fileList);
+        request.setAttribute("folderList", folderList);
+        dispatcher.forward(request, response);
+>>>>>>> 4f3dd00c1acc0915bc2cb933d645f10cd6b63910
     }
 
     /**

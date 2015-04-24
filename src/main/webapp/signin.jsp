@@ -19,11 +19,12 @@
     <form class="form-signin" action="SignInRequest" method="POST">
         <a href="index.jsp"><img src="img/logo_dbox.png" alt="DBox logo" width="128"
                                  class="img-responsive center-block"/></a>
-        <% if (request.getAttribute("loginError") != null) {
-            Boolean error = (Boolean) request.getAttribute("loginError");
+        <% if (request.getSession().getAttribute("loginError") != null) {
+            Boolean error = (Boolean) request.getSession().getAttribute("loginError");
             if (error) {
         %>
         <br>
+
         <div class="alert alert-danger" style="text-align: center;" role="alert">
             <strong>Enter a valid email address</strong>
         </div>
@@ -33,6 +34,7 @@
             if (newUser) {
         %>
         <br>
+
         <div class="alert alert-success" style="text-align: center;" role="alert">
             Signed up successfully! You can now login
         </div>
@@ -41,7 +43,8 @@
             }
         %>
         <h2 class="form-signin-heading" style="text-align: center;">Login</h2>
-        <input name="email" type="email" class="form-control" placeholder="Email address*" autofocus="autofocus" required>
+        <input name="email" type="email" class="form-control" placeholder="Email address*" autofocus="autofocus"
+               required>
         <input name="password" type="password" class="form-control" placeholder="Password*" required>
         <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
         <button onclick="window.location.href = 'signup.jsp'" class="btn btn-lg btn-primary btn-block" type="button">Not
