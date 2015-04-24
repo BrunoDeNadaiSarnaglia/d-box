@@ -42,7 +42,7 @@
             <a class="navbar-brand" href="#">DBox</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" action="SettingsPage" method="POST">
+            <form class="navbar-form navbar-left" action="SettingsPage" method="POST">
                 <input type="hidden" name="name" value="<% out.print(name); %>">
                 <input type="hidden" name="email" value="<% out.print(email); %>">
                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
@@ -51,8 +51,8 @@
                         style="margin-top: 7px; background-color: #333; border-color: #333;">Settings
                 </button>
             </form>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
+            <form class="navbar-form navbar-left">
+                <input type="text" class="form-control" placeholder="Search friends...">
             </form>
         </div>
     </div>

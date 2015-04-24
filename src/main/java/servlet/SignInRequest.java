@@ -12,7 +12,6 @@ import db.SingInQuery;
 import rowClasses.File;
 import rowClasses.Folder;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -87,7 +86,6 @@ public class SignInRequest extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        RequestDispatcher dispatcher;
         Integer id = null;
         if (SingInQuery.check(email, password)) {
             id = IdByEmail.getId(email);
@@ -106,7 +104,7 @@ public class SignInRequest extends HttpServlet {
             httpSession.setAttribute("rootID", id);
             httpSession.setAttribute("fileList", fileList);
             httpSession.setAttribute("folderList", folderList);
-            response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
+            response.sendRedirect(getServletContext().getContextPath() + "/welcome.jsp");
         } else {
             this.doGet(request, response);
         }
