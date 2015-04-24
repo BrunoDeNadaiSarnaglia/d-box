@@ -16,6 +16,9 @@ public class DeleteFile {
             preparedStatement = connection.prepareStatement("DELETE FROM file WHERE id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("DELETE FROM contain WHERE childId = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
