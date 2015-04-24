@@ -1,9 +1,6 @@
 package servlet;
 
-import db.DeleteFile;
-import db.DeleteFolder;
-import db.ListFilesInFolder;
-import db.ListFoldersInFolder;
+import db.*;
 import rowClasses.File;
 import rowClasses.Folder;
 
@@ -80,7 +77,6 @@ public class DeleteFileRequest extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         Integer parentID = Integer.valueOf(request.getParameter("id"));
         Integer deleteID = Integer.valueOf(request.getParameter("deleteID"));
         DeleteFile.delete(deleteID);
@@ -94,7 +90,6 @@ public class DeleteFileRequest extends HttpServlet {
         dispatcher = request.getRequestDispatcher("/welcome.jsp");
         request.setAttribute("name", name);
         request.setAttribute("email", email);
-        request.setAttribute("rootID", rootID);
         request.setAttribute("id", parentID);
         request.setAttribute("fileList", fileList);
         request.setAttribute("folderList", folderList);
