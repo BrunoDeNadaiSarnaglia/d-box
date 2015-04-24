@@ -6,10 +6,10 @@ package rowClasses;
 public class User {
     private String email;
     private String name;
-    private String id;
+    private Integer id;
     private String password;
 
-    public User(String email, String name, String id) {
+    public User(String email, String name, Integer id) {
         this.email = email;
         this.name = name;
         this.id = id;
@@ -23,7 +23,7 @@ public class User {
         this.name = name;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,7 +39,7 @@ public class User {
         return name;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
