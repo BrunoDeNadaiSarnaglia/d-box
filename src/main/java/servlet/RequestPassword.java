@@ -80,12 +80,14 @@ public class RequestPassword extends HttpServlet {
         dispatcher = request.getRequestDispatcher("/settings.jsp");
         request.setAttribute("name", name);
         request.setAttribute("email", email);
-        if (password1.equals(password2)) {
-            UpdatePassword.update(email, password1);
-            request.setAttribute("changedPassword", true);
-        } else {
-            request.setAttribute("changedPassword", false);
+        boolean changedPassword = false;
+        if (password1 != null && password2 != null) {
+            if (password1.equals(password2)) {
+                UpdatePassword.update(email, password1);
+                changedPassword = true;
+            }
         }
+        request.setAttribute("changedPassword", changedPassword);
         dispatcher.forward(request, response);
     }
 
