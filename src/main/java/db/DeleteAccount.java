@@ -25,7 +25,8 @@ public class DeleteAccount {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
                 int id = resultSet.getInt("id");
-                DeleteFolder.delete(id);
+                DeleteFolder deleteFolder = new DeleteFolder();
+                deleteFolder.delete(id);
             }
             preparedStatement = connection.prepareStatement("DELETE FROM users WHERE email = ?");
             preparedStatement.setString(1, email);

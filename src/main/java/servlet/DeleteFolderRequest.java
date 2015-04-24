@@ -48,6 +48,7 @@ public class DeleteFolderRequest extends HttpServlet {
         }*/
     }
 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
@@ -80,7 +81,8 @@ public class DeleteFolderRequest extends HttpServlet {
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         Integer parentID = Integer.valueOf(request.getParameter("id"));
         Integer deleteID = Integer.valueOf(request.getParameter("deleteID"));
-        DeleteFolder.delete(deleteID);
+        DeleteFolder deleteFolder = new DeleteFolder();
+        deleteFolder.delete(deleteID);
         HashSet<File> fileList = null;
         HashSet<Folder> folderList = null;
         if (parentID != null) {
