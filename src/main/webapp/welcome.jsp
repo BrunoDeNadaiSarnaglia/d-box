@@ -100,7 +100,7 @@
                 </div>
             </div>
             <h2 class="sub-header">Your files</h2>
-            <% if (fileList != null || folderList != null) {
+            <% if ((fileList != null && fileList.size() > 0) || (folderList != null && folderList.size() > 0)) {
             %>
             <div class="table-responsive">
                 <table class="table table-striped">
