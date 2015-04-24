@@ -87,6 +87,7 @@ public class DeleteFolderRequest extends HttpServlet {
         HashSet<Folder> folderList = null;
         if (parentID != null) {
             fileList = ListFilesInFolder.list(parentID);
+            ListFoldersInFolder listFoldersInFolder = new ListFoldersInFolder();
             folderList = listFoldersInFolder.list(parentID);
         }
         RequestDispatcher dispatcher;
