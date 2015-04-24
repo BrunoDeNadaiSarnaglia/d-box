@@ -5,7 +5,11 @@
  */
 package servlet;
 
+import db.ListFilesInFolder;
+import db.ListFoldersInFolder;
 import db.SingInQuery;
+import rowClasses.File;
+import rowClasses.Folder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashSet;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
@@ -81,10 +86,14 @@ public class SignInRequest extends HttpServlet {
         String password = request.getParameter("password");
         RequestDispatcher dispatcher;
         if (SingInQuery.check(email, password)) {
+            HashSet<File> fileList = ListFilesInFolder.list(1);
+            HashSet<Folder> folderList = ListFoldersInFolder.list(1);
             dispatcher = request.getRequestDispatcher("/welcome.jsp");
             request.setAttribute("name", SingInQuery.username);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
+            request.setAttribute("fileList", fileList);
+            request.setAttribute("folderList", folderList);
             dispatcher.forward(request, response);
         } else {
             dispatcher = request.getRequestDispatcher("/signin.jsp");

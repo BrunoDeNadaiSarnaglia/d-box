@@ -3,7 +3,9 @@
     Author     : Cassio
 --%>
 
-<%@page import="java.util.ArrayList" %>
+<%@ page import="rowClasses.File" %>
+<%@ page import="rowClasses.Folder" %>
+<%@ page import="java.util.HashSet" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html lang="en">
 <head>
@@ -11,6 +13,8 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
+            HashSet<File> fileList = (HashSet<File>) request.getAttribute("fileList");
+            HashSet<Folder> folderList = (HashSet<Folder>) request.getAttribute("folderList");
             out.print(name);
         %>
         !</title>
@@ -96,33 +100,33 @@
                 </div>
             </div>
             <h2 class="sub-header">Your files</h2>
-
+            <% if ((fileList != null && fileList.size() > 0) || (folderList != null && folderList.size() > 0)) {
+            %>
             <div class="table-responsive">
-                <form>
-                    <table class="table table-striped">
-                        <col width="100px">
-                        <col width="30%">
-                        <col>
-                        <col width="100px">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>URL</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1,001</td>
-                            <td>File</td>
-                            <td>simple_url.com</td>
-                            <td class="danger" style="text-align: center;">DELETE</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
+                <table class="table table-striped">
+                    <col width="30%">
+                    <col>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>URL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>File Name whatever</td>
+                        <td>simple_url.com</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+            <%
+            } else {
+            %>
+            <h3>You have no files or folders</h3>
+            <%
+                }
+            %>
         </div>
     </div>
 </div>
