@@ -55,7 +55,7 @@
             <form class="navbar-form navbar-left">
                 <input type="text" class="form-control" placeholder="Search friends...">
                 <button class="btn btn-primary" type="submit" style="background-color: #333; border-color: #333;">
-                    <span class="glyphicon glyphicon-search"></span> Search
+                    <span class="glyphicon glyphicon-search"></span> Add a friend
                 </button>
             </form>
         </div>
