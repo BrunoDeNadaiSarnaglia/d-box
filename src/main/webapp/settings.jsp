@@ -12,6 +12,10 @@
         <%
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
+            if (name != null)
+                out.print(name);
+            if (email != null)
+                out.print(email);
         %>
     </title>
     <meta charset="UTF-8">
