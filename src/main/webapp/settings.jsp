@@ -31,11 +31,14 @@
         Password changed successfully!
     </div>
     <% } else {
-    }%>
+    %>
     <div class="alert alert-danger" style="text-align: center;" role="alert">
         The two passwords do not match
     </div>
-    }%>
+    <%
+            }
+        }
+    %>
     <img src="img/logo_dbox.png" alt="DBox logo" width="128" class="img-responsive center-block"/>
 
     <h2 class="form-signin-heading" style="text-align: center;">Settings</h2>
