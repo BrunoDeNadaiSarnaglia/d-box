@@ -6,6 +6,7 @@
 <%@ page import="rowClasses.File" %>
 <%@ page import="rowClasses.Folder" %>
 <%@ page import="java.util.HashSet" %>
+<%@ page import="db.IdByEmail" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
             String name = (String) request.getAttribute("name");
             String email = (String) request.getAttribute("email");
             Integer thisID = (Integer) request.getAttribute("id");
-            Integer rootID = (Integer) request.getAttribute("rootID");
+            Integer rootID = IdByEmail.getId(email);
             HashSet<File> fileList = (HashSet<File>) request.getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getAttribute("folderList");
             out.print(name);
