@@ -1,5 +1,8 @@
 package db;
 
+
+import rowClasses.Folder;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,27 +13,23 @@ import java.util.HashSet;
 /**
  * Created by Bruno on 4/21/2015.
  */
-public class ListContentInFolder {
+public class ListFoldersInFolder {
 
-    private static HashSet<Integer> setOfIds = new HashSet<Integer>();
-    
+    private static HashSet<Folder> setOfFolders = new HashSet<Folder>();
 
 
-    public static void add(Integer id){
+    public static void query(Integer id){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT childId FROM contain WHERE parentId = ?");
+            preparedStatement = connection.prepareStatement("SELECT id, name FROM contain, folder WHERE parentId = ? AND childId = id");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
                 int idChild= resultSet.getInt("childId");
-                setOfIds.add(idChild);
-            }
-            for (Integer idChild : setOfIds){
-
+                setOfFolders.add(new Folder(resultSet.getInt("id"), resultSet.getString("name")));
             }
         } catch (Exception e){
             e.printStackTrace();
