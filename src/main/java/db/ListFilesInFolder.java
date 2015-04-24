@@ -14,9 +14,9 @@ import java.util.HashSet;
 public class ListFilesInFolder {
 
 
-    private static HashSet<File> setOfFiles = new HashSet<File>();
+    private HashSet<File> setOfFiles = new HashSet<File>();
 
-    public static HashSet<File> list(Integer id) {
+    public HashSet<File> list(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
