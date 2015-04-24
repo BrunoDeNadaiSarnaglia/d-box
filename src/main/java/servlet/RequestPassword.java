@@ -1,5 +1,7 @@
 package servlet;
 
+import db.UpdatePassword;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -73,7 +75,7 @@ public class RequestPassword extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        //UpdatePassword.update(email, password);
+        UpdatePassword.update(email, password);
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/settings.jsp");
         request.setAttribute("name", name);
