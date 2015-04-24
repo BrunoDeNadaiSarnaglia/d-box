@@ -28,6 +28,7 @@ public class ListFoldersInFolder {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
+                System.out.println(id + " : " + resultSet.getInt("id"));
                 setOfFolders.add(new Folder(resultSet.getInt("id"), resultSet.getString("name")));
             }
         } catch (Exception e) {
