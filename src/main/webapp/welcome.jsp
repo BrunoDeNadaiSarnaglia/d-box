@@ -127,7 +127,7 @@
                         for (Folder folder : folderList) {
                     %>
                     <tr>
-                        <td><span class="glyphicon glyphicon-folder-open" style="margin: 0; padding: 0;"></td>
+                        <td><span class="glyphicon glyphicon-folder-open" style="margin: 0; padding: 0;"></span></td>
                         <td><% out.print(folder.getName()); %></td>
                         <td>
                             <form>
