@@ -52,7 +52,7 @@
                     Settings
                 </button>
             </form>
-            <form method="get" action="SearchFriend" class="navbar-form navbar-left">
+            <form method="POST" action="SearchFriend" class="navbar-form navbar-left">
                 <input type="hidden" name="name" value="<% out.print(name); %>">
                 <input type="hidden" name="email" value="<% out.print(email); %>">
                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
