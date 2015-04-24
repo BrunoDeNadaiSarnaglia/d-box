@@ -96,15 +96,14 @@ public class SignInRequest extends HttpServlet {
                 fileList = ListFilesInFolder.list(id);
                 folderList = ListFoldersInFolder.list(id);
             }
-            //dispatcher = request.getRequestDispatcher("/welcome.jsp");
+            dispatcher = request.getRequestDispatcher("/welcome.jsp");
             request.setAttribute("name", SingInQuery.username);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
             request.setAttribute("id", id);
             request.setAttribute("fileList", fileList);
             request.setAttribute("folderList", folderList);
-            //dispatcher.forward(request, response);
-            response.sendRedirect("/welcome.jsp?s=1");
+            dispatcher.forward(request, response);
         } else {
             dispatcher = request.getRequestDispatcher("/signin.jsp");
             request.setAttribute("loginError", true);
