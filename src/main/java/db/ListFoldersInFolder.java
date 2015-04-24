@@ -29,7 +29,7 @@ public class ListFoldersInFolder {
             resultSet = preparedStatement.executeQuery();
             System.out.println(id + "resultset " + resultSet.toString());
             while(resultSet.next()) {
-                System.out.println(id + " : " + resultSet.getInt("id"));
+                System.out.println("sadasdsa");
                 setOfFolders.add(new Folder(resultSet.getInt("id"), resultSet.getString("name")));
             }
         } catch (Exception e) {
