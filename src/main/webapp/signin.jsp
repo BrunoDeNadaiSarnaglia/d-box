@@ -23,6 +23,7 @@
             Boolean error = (Boolean) request.getAttribute("loginError");
             if (error) {
         %>
+        <br>
         <div class="alert alert-danger" style="text-align: center;" role="alert">
             <strong>Enter a valid email address</strong>
         </div>
@@ -31,6 +32,7 @@
             Boolean newUser = (Boolean) request.getAttribute("newUser");
             if (newUser) {
         %>
+        <br>
         <div class="alert alert-success" style="text-align: center;" role="alert">
             Signed up successfully! You can now login
         </div>

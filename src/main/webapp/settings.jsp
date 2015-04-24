@@ -44,8 +44,8 @@
     <form class="form-signin" action="PasswordUpdateRequest" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
-        <input type="password" name="password1" class="form-control" placeholder="Enter new password">
-        <input type="password" name="password2" class="form-control" placeholder="Enter new password again">
+        <input type="password" name="password1" class="form-control" placeholder="Enter new password*" required>
+        <input type="password" name="password2" class="form-control" placeholder="Enter new password again*" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Set new password</button>
     </form>
     <form class="form-signin" action="RequestDelete" method="POST">
