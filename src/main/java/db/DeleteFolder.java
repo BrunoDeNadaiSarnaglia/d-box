@@ -17,13 +17,17 @@ public class DeleteFolder {
         PreparedStatement preparedStatement = null;
         try{
             HashSet<File> setOfFiles =  ListFilesInFolder.list(id);
-            for(File file : setOfFiles){
-                DeleteFile.delete(file.getId());
+            if(setOfFiles != null && setOfFiles.size() != 0) {
+                for (File file : setOfFiles) {
+                    DeleteFile.delete(file.getId());
+                }
             }
             HashSet<Folder> setOfFolder=  ListFoldersInFolder.list(id);
-            for(Folder folder : setOfFolder){
-                DeleteFolder deleteFolder = new DeleteFolder();
-                deleteFolder.delete(folder.getId());
+            if(setOfFolder!= null && setOfFolder.size() != 0) {
+                for (Folder folder : setOfFolder) {
+                    DeleteFolder deleteFolder = new DeleteFolder();
+                    deleteFolder.delete(folder.getId());
+                }
             }
             connection = ConnectionConfigure.getConnection();
             preparedStatement = connection.prepareStatement("DELETE FROM folder WHERE id = ?");
