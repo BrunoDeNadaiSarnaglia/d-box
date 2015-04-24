@@ -69,7 +69,8 @@ public class SignInRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
+        view.forward(request, response);
     }
 
     /**
@@ -95,14 +96,15 @@ public class SignInRequest extends HttpServlet {
                 fileList = ListFilesInFolder.list(id);
                 folderList = ListFoldersInFolder.list(id);
             }
-            dispatcher = request.getRequestDispatcher("/welcome.jsp");
+            //dispatcher = request.getRequestDispatcher("/welcome.jsp");
             request.setAttribute("name", SingInQuery.username);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
             request.setAttribute("id", id);
             request.setAttribute("fileList", fileList);
             request.setAttribute("folderList", folderList);
-            dispatcher.forward(request, response);
+            //dispatcher.forward(request, response);
+            response.sendRedirect("/welcome.do?s=1");
         } else {
             dispatcher = request.getRequestDispatcher("/signin.jsp");
             request.setAttribute("loginError", true);

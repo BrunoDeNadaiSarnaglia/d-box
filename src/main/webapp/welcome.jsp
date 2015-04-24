@@ -119,7 +119,7 @@
                     <tr>
                         <th>Type</th>
                         <th>Name</th>
-                        <th>URL</th>
+                        <th>Link</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -154,7 +154,7 @@
                             out.print(file.getURL()); %></a></td>
                         <td>
                             <form>
-                                <button class="btn btn-block btn-danger">DELETE</button>
+                                <button class="btn btn-block btn-danger" style="width: 200px;">DELETE</button>
                             </form>
                         </td>
                     </tr>
