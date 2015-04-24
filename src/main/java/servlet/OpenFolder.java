@@ -69,15 +69,15 @@ public class OpenFolder extends HttpServlet {
         Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         HashSet<File> fileList = ListFilesInFolder.list(idParent);
         HashSet<Folder> folderList = ListFoldersInFolder.list(idParent);
-        RequestDispatcher dispatcher;
-        dispatcher = request.getRequestDispatcher("/welcome.jsp");
-        request.setAttribute("name", name);
-        request.setAttribute("email", email);
-        request.setAttribute("id", idParent);
-        request.setAttribute("rootID", rootID);
-        request.setAttribute("fileList", fileList);
-        request.setAttribute("folderList", folderList);
-        dispatcher.forward(request, response);
+
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("name", name);
+        httpSession.setAttribute("email", email);
+        httpSession.setAttribute("id", idParent);
+        httpSession.setAttribute("rootID", rootID);
+        httpSession.setAttribute("fileList", fileList);
+        httpSession.setAttribute("folderList", folderList);
+        response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
     /**
