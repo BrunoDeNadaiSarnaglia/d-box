@@ -7,6 +7,7 @@ package servlet;
 
 import db.SignUp;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -81,9 +82,11 @@ public class SignUpRequest extends HttpServlet {
         String username = request.getParameter("name");
         String password = request.getParameter("password");
         SignUp.insert(username, email, password);
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("newUser", true);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("/signin.jsp");
+        request.setAttribute("newUser", true);
         response.sendRedirect(getServletContext().getContextPath() + "signin.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
