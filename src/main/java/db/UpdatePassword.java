@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 /**
- * Created by Bruno on 4/24/2015.
+ * @author Bruno de Nadai Sarnaglia <denadai2@illinois.edu>
+ * @version 1.0
  */
 public class UpdatePassword {
 
@@ -36,5 +37,4 @@ public class UpdatePassword {
             }
         }
     }
-
 }

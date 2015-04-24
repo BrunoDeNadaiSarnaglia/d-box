@@ -43,11 +43,11 @@
 
     <h2 class="form-signin-heading" style="text-align: center;">Settings</h2>
 
-    <form class="form-signin" action="RequestPassword" method="POST">
+    <form class="form-signin" action="PasswordUpdateRequest" method="POST">
         <input type="hidden" name="name" value="<% out.print(name);%>">
         <input type="hidden" name="email" value="<% out.print(email);%>">
-        <input type="password" name="password1" class="form-control" placeholder="Enter new password">
-        <input type="password" name="password2" class="form-control" placeholder="Enter new password again">
+        <input type="password" name="password1" placeholder="Enter new password">
+        <input type="password" name="password2" placeholder="Enter new password again">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Set new password</button>
     </form>
     <form class="form-signin" action="RequestDelete" method="POST">
