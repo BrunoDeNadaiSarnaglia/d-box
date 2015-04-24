@@ -114,6 +114,7 @@
                     <col>
                     <col width="30%">
                     <col>
+                    <col>
                     <thead>
                     <tr>
                         <th>Type</th>
@@ -131,12 +132,12 @@
                         <td><% out.print(folder.getName()); %></td>
                         <td>
                             <form>
-                                <button class="btn btn-block btn-primary">OPEN FOLDER</button>
+                                <button class="btn btn-block btn-primary" style="width: 200px;">OPEN FOLDER</button>
                             </form>
                         </td>
                         <td>
                             <form>
-                                <button class="btn btn-block btn-danger">DELETE</button>
+                                <button class="btn btn-block btn-danger" style="width: 200px;">DELETE</button>
                             </form>
                         </td>
                     </tr>
