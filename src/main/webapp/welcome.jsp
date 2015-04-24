@@ -17,6 +17,7 @@
             Integer thisID = (Integer) request.getSession().getAttribute("id");
             HashSet<File> fileList = (HashSet<File>) request.getSession().getAttribute("fileList");
             HashSet<Folder> folderList = (HashSet<Folder>) request.getSession().getAttribute("folderList");
+            Boolean showFriends = (Boolean) request.getSession().getAttribute("showFriends");
             out.print(name);
         %>
         !</title>
@@ -64,14 +65,11 @@
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">My DBox<span class="sr-only">(current)</span></a></li>
             </ul>
-            <form id="show_friends">
+            <form action="ShowFriendsRequest" method="POST">
                 <ul class="nav nav-sidebar">
-                    <li><a href="#" onclick="form.submit()">Show my friends</a></li>
-                </ul>
-            </form>
-            <form id="add_friend">
-                <ul class="nav nav-sidebar">
-                    <li><a href="#" onclick="form.submit()">Add a friend...</a></li>
+                    <li>
+                        <button class="btn btn-block btn-primary" type="submit">Show my friends</button>
+                    </li>
                 </ul>
             </form>
             <ul class="nav nav-sidebar">
