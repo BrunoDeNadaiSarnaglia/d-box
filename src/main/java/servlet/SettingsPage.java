@@ -73,13 +73,11 @@ public class SettingsPage extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         Integer id = Integer.valueOf(request.getParameter("id"));
-        Integer rootID = Integer.valueOf(request.getParameter("rootID"));
         RequestDispatcher dispatcher;
         dispatcher = request.getRequestDispatcher("/settings.jsp");
         request.setAttribute("name", name);
         request.setAttribute("email", email);
         request.setAttribute("id", id);
-        request.setAttribute("rootID", rootID);
         dispatcher.forward(request, response);
     }
 
