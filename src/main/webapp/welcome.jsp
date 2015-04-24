@@ -213,6 +213,13 @@
             } else { /* Case when you do show friends */
             %>
             <h2>Your friends</h2>
+
+            <form action="OpenFolder" method="POST">
+                <input type="hidden" name="name" value="<% out.print(name); %>">
+                <input type="hidden" name="email" value="<% out.print(email); %>">
+                <input type="hidden" name="id" value="<% out.print(thisID); %>">
+                <button class="btn btn-block btn-success" style="width: 200px;" type="submit">See your files</button>
+            </form>
             <%
                 ArrayList<User> userList = (ArrayList<User>) request.getSession().getAttribute("userList");
                 if (userList != null && userList.size() > 0) {
