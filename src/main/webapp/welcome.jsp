@@ -291,6 +291,7 @@
                     <tbody>
                     <%
                         for (User user : friendsAlike) {
+                            if ((userList != null && !userList.contains(user)) || !user.getEmail().equals(email)) {
                     %>
                     <tr>
                         <td><% out.print(user.getName()); %></td>
@@ -307,6 +308,7 @@
                         </td>
                     </tr>
                     <%
+                            }
                         }
                     %>
                     </tbody>
