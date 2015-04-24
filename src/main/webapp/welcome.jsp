@@ -69,7 +69,9 @@
             <h1 class="page-header">Hello, <% out.print(name);%>!</h1>
 
             <div class="row placeholders">
-                <div class="col-md-6 placeholder">
+                <div class="col-md-2 placeholder">
+                </div>
+                <div class="col-md-3 placeholder">
                     <span class="glyphicon glyphicon-file" aria-hidden="true" style="font-size: 300%;"></span>
 
                     <form class="form-signin" action="AddFileToCurrentFolder" method="POST">
@@ -78,13 +80,17 @@
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
                 </div>
-                <div class="col-md-6 placeholder">
+                <div class="col-md-2 placeholder">
+                </div>
+                <div class="col-md-3 placeholder">
                     <span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="font-size: 300%;"></span>
 
                     <form class="form-signin" action="AddFolderToCurrentFolder" method="POST">
                         <input type="text" name="folder_name" placeholder="Folder Name" class="form-control">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add a file</button>
                     </form>
+                </div>
+                <div class="col-md-2 placeholder">
                 </div>
             </div>
             <h2 class="sub-header">Your files</h2>
