@@ -30,8 +30,7 @@
     <div class="alert alert-success" style="text-align: center;" role="alert">
         Password changed successfully!
     </div>
-    <% }
-        if (!changedPassword) {
+    <% } else {
     %>
     <div class="alert alert-danger" style="text-align: center;" role="alert">
         The two passwords do not match
