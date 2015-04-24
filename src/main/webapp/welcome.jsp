@@ -290,16 +290,17 @@
                     </thead>
                     <tbody>
                     <%
-                        for (User user : friendsAlike) {
+                        for (User searched : friendsAlike) {
+                            if ((userList != null && !userList.contains(searched)) || !searched.getEmail().equals(email)) {
                     %>
                     <tr>
-                        <td><% out.print(user.getName()); %></td>
-                        <td><% out.print(user.getEmail()); %></td>
+                        <td><% out.print(searched.getName()); %></td>
+                        <td><% out.print(searched.getEmail()); %></td>
                         <td>
                             <form action="Befriend" method="POST">
                                 <input type="hidden" name="name" value="<% out.print(name); %>">
                                 <input type="hidden" name="email" value="<% out.print(email); %>">
-                                <input type="hidden" name="friendEmail" value="<% out.print(user.getEmail()); %>">
+                                <input type="hidden" name="friendEmail" value="<% out.print(searched.getEmail()); %>">
                                 <input type="hidden" name="id" value="<% out.print(thisID); %>">
                                 <button class="btn btn-block btn-success" style="width: 200px;" type="submit">Be Friends
                                 </button>
@@ -307,6 +308,7 @@
                         </td>
                     </tr>
                     <%
+                            }
                         }
                     %>
                     </tbody>

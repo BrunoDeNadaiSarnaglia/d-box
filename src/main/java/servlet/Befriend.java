@@ -2,6 +2,8 @@ package servlet;
 
 import db.AddFriend;
 import db.DeleteFriend;
+import db.FindFriends;
+import rowClasses.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
@@ -78,11 +81,14 @@ public class Befriend extends HttpServlet {
         Integer parentID = Integer.valueOf(request.getParameter("id"));
         String friendEmail = request.getParameter("friendEmail");
         AddFriend.add(email, friendEmail);
+        ArrayList<User> userList = FindFriends.find(email);
         HttpSession httpSession = request.getSession();
         httpSession.setAttribute("name", name);
         httpSession.setAttribute("email", email);
         httpSession.setAttribute("id", parentID);
         httpSession.setAttribute("showFriends", true);
+        httpSession.setAttribute("userList", userList);
+        httpSession.setAttribute("friendsAlike", null);
         response.sendRedirect(getServletContext().getContextPath() + "welcome.jsp");
     }
 
