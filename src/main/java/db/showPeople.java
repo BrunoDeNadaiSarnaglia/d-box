@@ -1,35 +1,32 @@
 package db;
 
+import rowClasses.User;
+
+import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 
 /**
  * Created by Bruno on 4/24/2015.
  */
-public class DeleteAccount {
+public class showPeople {
 
-    public static void delete(String email){
+    public static HashSet<User> show(String like){
+        HashSet<User> setOfUser = new HashSet<User>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
             connection = ConnectionConfigure.getConnection();
-            preparedStatement = connection.prepareStatement("DELETE FROM friendship WHERE email1 = ? OR email2 = ?");
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, email);
-            preparedStatement.executeUpdate();
-            preparedStatement = connection.prepareStatement("SELECT id FROM users WHERE email = ?");
-            preparedStatement.setString(1, email);
+            preparedStatement = connection.prepareStatement("SELECT email, name, password, id FROM users WHERE name LIKE ?");
+            preparedStatement.setString(1, "%" + like + "%");
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
-                int id = resultSet.getInt("id");
-                DeleteFolder.delete(id);
+            while(resultSet.next()){
+                setOfUser.add(new User(resultSet.getString("email"), resultSet.getString("name"), resultSet.getInt("id")));
             }
-            preparedStatement = connection.prepareStatement("DELETE FROM users WHERE email = ?");
-            preparedStatement.setString(1, email);
-            preparedStatement.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
         } finally {
@@ -55,5 +52,7 @@ public class DeleteAccount {
                 }
             }
         }
+        return setOfUser;
     }
+
 }
