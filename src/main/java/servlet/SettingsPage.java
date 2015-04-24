@@ -1,30 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
+package servlet;
 
-import db.SignUp;
-
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author Cassio dos Santos Sousa <dssntss2@illinois.edu>
  * @version 1.0
  */
 @WebServlet(
-        name = "RequestSignUp",
-        urlPatterns = {"/RequestSignUp"}
+        name = "SettingsPage",
+        urlPatterns = {"/SettingsPage"}
 )
-public class RequestSignUp extends HttpServlet {
+public class SettingsPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,10 +34,10 @@ public class RequestSignUp extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RequestSignUp</title>");
+            out.println("<title>Servlet RequestSignIn</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RequestSignUp at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RequestSignIn at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }*/
@@ -78,12 +70,12 @@ public class RequestSignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String username = request.getParameter("name");
-        String password = request.getParameter("password");
-        SignUp.insert(username, email, password);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/signin.jsp");
-        request.setAttribute("newUser", true);
+        RequestDispatcher dispatcher;
+        dispatcher = request.getRequestDispatcher("/settings.jsp");
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
         dispatcher.forward(request, response);
     }
 
